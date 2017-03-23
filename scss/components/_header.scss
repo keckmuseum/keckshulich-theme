@@ -1,0 +1,140 @@
+header#header {
+  @include containers();
+  overflow-y:hidden;
+  position:relative;
+  min-height:300px;
+  background-color:rgba($black,0.8);
+  color:$white;
+  @include breakpoint(medium) {
+    background-color:transparent;
+  }
+  >img:first-of-type {
+    display:none;
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    width:100%;
+    height:auto;
+    @include breakpoint(medium) {
+      display:block;
+    }
+  }
+  >div:first-of-type {
+    >div {
+      position:relative;
+        //@include grid-row(nested);
+        #branding {
+          //@include grid-column(3);
+          @include breakpoint(medium) {
+            position:absolute;
+            top:0;
+            left:0;
+            min-height:300px;
+            width:530px;
+            z-index:6;
+            background:url(../img/bg-header-gradient.png) transparent repeat-y right 0;
+          }
+          #site-title {
+            text-align:center;
+            @include breakpoint(medium) {
+              @include vertical-center();
+              width:70%;
+            }
+          }
+          #site-description {
+            @include breakpoint(medium) {
+            }
+          }
+        }
+        #menu-button {
+          width:100%;
+          margin:rem-calc(10px) auto;
+          padding:rem-calc(10px);
+          display:block;
+          text-align:left;
+          background-color:rgba($black,0.8);
+          >span {
+            position:relative;
+            &:before {
+              position: absolute;
+              top: 0;
+              left: 0;
+              display: block;
+              width: rem-calc(20px);
+              height: 2px;
+              background: $white;
+              box-shadow: 0 7px 0 $white, 0 14px 0 $white;
+              content: '';
+            }
+            padding-left:rem-calc(30px);
+            width:auto;
+            color:$white;
+          }
+          &:focus {
+            outline:none;
+            background-color:rgba($black,1);
+          }
+        }
+        #menu {
+          margin-top:rem-calc(-5px);
+          ul {
+            @include list-unstyled();
+            padding:0 0 rem-calc(10px);
+            li {
+              text-align:left;
+              background-color:rgba($black,0.5);
+              margin-bottom:rem-calc(5px);
+              display:block;
+              padding-left:rem-calc(30px);
+              a {
+                padding:rem-calc(10px);
+                width:100%;
+              }
+            }
+          }
+          @include breakpoint(medium) {
+            position:absolute;
+            top:0;
+            right:0;
+            z-index:9;
+            background:rgba($black,0.8);
+            border-bottom-left-radius:10px;
+            ul {
+              @include list-inline();
+              padding:rem-calc(15px) rem-calc(20px);
+              >li {
+                background-color:transparent;
+                margin-left:1em;
+                text-align:left;
+                &:first-child {
+                  margin-left:0;
+                }
+              }
+            }
+          }
+          a {
+            &:link,&:visited {
+              color:$white;
+            }
+            &:hover,&:focus {
+              color:#ff0000;
+            }
+          }
+        }
+        #hero {
+          @include breakpoint(medium) {
+            position:absolute;
+            top:0;
+            left:-50%;
+            transform:translate(50%);
+            min-height:300px;
+            width:100%;
+            z-index:4;
+          }
+        }
+    }
+  }
+
+}

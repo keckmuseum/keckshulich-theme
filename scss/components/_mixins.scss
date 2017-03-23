@@ -1,0 +1,22 @@
+@mixin list-unstyled() {
+  list-style-type:none;
+  margin:0;
+}
+@mixin list-inline() {
+  @include list-unstyled();
+  >li {
+    display:inline-block;
+  }
+}
+@mixin containers() {
+  >div:first-of-type {
+    @include grid-row();
+    >div:first-of-type {
+      @include grid-column(11);
+      @include grid-column-position(center);
+      @include breakpoint(medium) {
+        @include grid-column(12);
+      }
+    }
+  }
+}
