@@ -28,3 +28,5 @@ function rm_theme_load_scripts()
 /*
  * Custom Image Sizes
  */
+
+ require get_template_directory() . '/rm_theme/functions.php';

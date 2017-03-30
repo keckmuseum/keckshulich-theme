@@ -1,0 +1,3 @@
+[submodule "rm_theme"]
+	path = rm_theme
+	url = git@bitbucket.org:revoltmedia/rm_theme.git
