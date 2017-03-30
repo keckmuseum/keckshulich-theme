@@ -1,4 +1,5 @@
 <?php
+require get_template_directory() . '/rm_theme/functions.php';
 
 add_action( 'wp_enqueue_scripts', 'rm_theme_parent_theme_enqueue_styles' );
 
@@ -28,5 +29,3 @@ function rm_theme_load_scripts()
 /*
  * Custom Image Sizes
  */
-
- require get_template_directory() . '/rm_theme/functions.php';
