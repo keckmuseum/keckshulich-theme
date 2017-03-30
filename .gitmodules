@@ -1,3 +1,6 @@
 [submodule "rm_theme"]
 	path = rm_theme
 	url = git@bitbucket.org:revoltmedia/rm_theme.git
+[submodule "customizer-repeater"]
+	path = customizer-repeater
+	url = git@github.com:revoltmedia/customizer-repeater.git
