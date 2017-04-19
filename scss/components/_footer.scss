@@ -1,0 +1,30 @@
+footer#footer {
+  padding:rem-calc(40px) 0;
+  >div {
+    @include grid-row();
+    >ul {
+      @include list-inline();
+      @include flex-grid-row();
+      >li {
+        @include flex-grid-column();
+        margin:0 auto;
+        &.widget_copyright_widget,
+        &.widget_nav_menu {
+          text-align:center;
+        }
+      }
+    }
+    &:first-child {
+      >ul {
+        >li {
+          @include breakpoint(medium) {
+            max-width:33%;
+          }
+        }
+      }
+    }
+  }
+  .menu {
+    @include mobile-buttons();
+  }
+}

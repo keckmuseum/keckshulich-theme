@@ -12,7 +12,9 @@
           <h2><?php echo $column->title; ?></h2>
         </header>
         <?php echo wpautop( $column->text ); ?>
-        <a href="<?php echo $column->link; ?>"><?php echo $column->button_text; ?></a>
+        <?php if($column->link != '' && $column->button_text != '') { ?>
+          <a class="action" href="<?php echo $column->link; ?>"><?php echo $column->button_text; ?></a>
+        <?php } ?>
       </section>
       <?php } ?>
     </div>

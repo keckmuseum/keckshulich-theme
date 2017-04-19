@@ -18,27 +18,26 @@
             <div>
               <section id="branding">
                 <div id="site-title">
-                  <?php logo(); ?>
+                  <?php logo("header","full"); ?>
                 </div>
               </section>
 
-              <button id="menu-button" data-responsive-toggle="menu">
+              <!-- <button id="menu-button" data-responsive-toggle="menu">
                 <span data-toggle>Menu</span>
               </button>
 
-              <nav id="menu" role="navigation">
+              <nav id="menu" role="navigation"> -->
                 <!-- div id="search">
                   <?php //get_search_form(); ?>
                 </div -->
-                <?php wp_nav_menu( array(
+                <?php /* wp_nav_menu( array(
                         'theme_location' => 'main-menu',
                         'container' => false,
                         //'menu_id' => 'nav',
                         'walker' => new rm_theme_walker_nav_menu,
-                       ) ); ?>
-              </nav>
+                       ) ); */ ?>
+              <!-- </nav> -->
             </div>
-            <?php get_template_part('block-slider'); ?>
           </div>
         </div>
       </header>

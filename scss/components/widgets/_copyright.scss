@@ -1,0 +1,9 @@
+.widget_copyright_widget {
+  line-height:rem-calc(16px);
+  font-size:rem-calc(12px);
+  padding-top:rem-calc(25px);
+  padding-bottom:rem-calc(25px);
+  footer#footer & {
+    text-align:center;
+  }
+}

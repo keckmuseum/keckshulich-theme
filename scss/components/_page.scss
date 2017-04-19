@@ -1,0 +1,10 @@
+.page {
+  #content {
+    @include flex-grid-row();
+    article {
+      @include flex-grid-column();
+      flex: 12 9 0px;
+      @include containers();
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.widget_nav_menu {
+  ul.menu {
+    @include list-inline();
+    line-height:rem-calc(60px);
+    >li {
+      a {
+        font-weight:$global-weight-bold;
+        color:$black;
+        &:after {
+          display:inline-block;
+          position:relative;
+          right:-20px;
+          content:'\2022';
+        }
+
+      }
+      &:last-child {
+        a:after {
+          display:none;
+        }
+      }
+
+    }
+  }
+  footer#footer & {
+    text-align:center;
+  }
+}

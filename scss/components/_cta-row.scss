@@ -1,0 +1,44 @@
+.cta-row {
+  @include containers($small-columns:12,$small-gutters:0);
+  margin:rem-calc(40px) 0;
+  >div {
+    >div {
+      @include grid-row();
+      @include breakpoint(930px) {
+        @include flex-grid-row();
+      }
+      >section {
+        @include grid-column(11);
+        @include grid-column-position(center);
+        border-bottom:1px solid $black;
+        padding-bottom:rem-calc(25px);
+        margin-bottom:rem-calc(25px);
+        &:last-child {
+          border-bottom:0;
+          margin-bottom:0;
+          padding-bottom:0;
+        }
+        //&:nth-of-type(even) {
+        //  background-color:rgba($white,0.2);
+        //}
+        @include breakpoint(930px) {
+          @include flex-grid-column(4,rem-calc(70px));
+          border-right:1px solid $black;
+          border-bottom:none;
+          padding-bottom:0;
+          margin-bottom:0;
+          &:last-child {
+            border-right:0;
+          }
+        }
+        flex:1 1 0px;
+        text-align:center;
+
+        .action {
+          @include button-rm();
+          margin-top:rem-calc(50px);
+        }
+      }
+    }
+  }
+}

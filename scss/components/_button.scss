@@ -1,0 +1,11 @@
+@mixin button-rm($font-size:false,$padding-top:rem-calc(10px),$padding-right:rem-calc(25px),$padding-bottom:rem-calc(10px),$padding-left:rem-calc(25px),$radius:3px,$icon:false, $expand:false, $background:$button-background, $background-hover:$button-background-hover, $color:$button-color, $style:solid) {
+  @include button($expand, $background, $background-hover, $color, $style);
+  border-radius:$radius;
+  @if $font-size {
+    font-size:$font-size;
+  }
+  padding-top:$padding-top;
+  padding-right:$padding-right;
+  padding-bottom:$padding-bottom;
+  padding-left:$padding-left;
+}
