@@ -1,5 +1,6 @@
 .page {
   #content {
+    @include content-spacing();
     @include flex-grid-row();
     article {
       @include flex-grid-column();

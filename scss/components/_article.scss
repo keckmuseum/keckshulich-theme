@@ -1,0 +1,4 @@
+main {
+  @include content-spacing();
+  @include containers($inner-1:'>article',$inner-2:'>.entry-content');
+}

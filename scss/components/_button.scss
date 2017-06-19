@@ -1,11 +1,56 @@
-@mixin button-rm($font-size:false,$padding-top:rem-calc(10px),$padding-right:rem-calc(25px),$padding-bottom:rem-calc(10px),$padding-left:rem-calc(25px),$radius:3px,$icon:false, $expand:false, $background:$button-background, $background-hover:$button-background-hover, $color:$button-color, $style:solid) {
+@mixin button-rm-static() {
+  padding-right:rem-calc(10px);
+  padding-left:rem-calc(10px);
+  padding-top:rem-calc(12px);
+  padding-bottom:rem-calc(12px);
+  @include breakpoint(medium) {
+    padding-top:rem-calc(15px);
+    padding-bottom:rem-calc(15px);
+  }
+}
+@mixin button-rm($font-size:false,$padding-top:false,$padding-right:false,$padding-bottom:false,$padding-left:false,$radius:3px,$icon:false, $expand:false, $background:$button-background, $background-hover:$button-background-hover, $color:$button-color, $style:solid) {
+  @include button-rm-static;
   @include button($expand, $background, $background-hover, $color, $style);
   border-radius:$radius;
   @if $font-size {
     font-size:$font-size;
   }
-  padding-top:$padding-top;
-  padding-right:$padding-right;
-  padding-bottom:$padding-bottom;
-  padding-left:$padding-left;
+  @if $padding-top {
+    padding-top:$padding-top;
+  }
+  @if $padding-right {
+    padding-right:$padding-right;
+  }
+  @if $padding-bottom {
+    padding-bottom:$padding-bottom;
+  }
+  @if $padding-left {
+    padding-left:$padding-left;
+  }
+  @if $icon {
+    position:relative;
+    padding-right:rem-calc(50px);
+    @if $padding-right {
+      padding-right:$padding-right;
+    }
+    &:after {
+      @include vertical-center();
+      @if $fa-font-path {
+        @include fa-icon();
+      }
+      right:rem-calc(20px);
+      content:$icon;
+    }
+  }
+  @else {
+    @if $padding-right {
+      padding-right:$padding-right;
+    }
+    @else {
+      padding-right:rem-calc(20px);
+    }
+    &:after {
+      display:none;
+    }
+  }
 }

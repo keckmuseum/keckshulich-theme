@@ -1,5 +1,6 @@
 footer#footer {
-  padding:rem-calc(40px) 0;
+  @include content-spacing();
+  padding:0;
   >div {
     @include grid-row();
     >ul {

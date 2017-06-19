@@ -1,3 +1,7 @@
+@mixin content-spacing($space-above: 50px,$space-below: 50px) {
+  margin-top:rem-calc($space-above);
+  margin-bottom:rem-calc($space-below);
+}
 @mixin list-unstyled() {
   list-style-type:none;
   margin:0;
@@ -8,10 +12,10 @@
     display:inline-block;
   }
 }
-@mixin containers($small-columns:11,$medium-columns:12,$small-position:center,$medium-position:0,$small-gutters:null,$medium-gutters:null) {
-  >div:first-of-type {
+@mixin containers($small-columns:11,$medium-columns:12,$small-position:center,$medium-position:0,$small-gutters:null,$medium-gutters:null,$inner-1:'>div:first-of-type',$inner-2:'>div:first-of-type') {
+  #{$inner-1} {
     @include grid-row();
-    >div:first-of-type {
+    #{$inner-2} {
       @include grid-column($small-columns);
       @include grid-column-position($small-position);
       @if $small-gutters != null {

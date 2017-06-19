@@ -45,7 +45,6 @@
 
 // 1. Global
 // ---------
-
 $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
@@ -267,7 +266,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out;
 
 $buttongroup-margin: 1rem;
 $buttongroup-spacing: 1px;
-$buttongroup-child-selector: '.button';
+$buttongroup-child-selector: '.btn-child';
 $buttongroup-expand-max: 6;
 $buttongroup-radius-on-each: true;
 
