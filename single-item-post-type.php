@@ -68,14 +68,14 @@ get_header(); ?>
 					<?php if (get_post_meta($post->ID, 'date', true)!='') { ?>
 					<div class="date-issued">
 						<h2>Date Issued:</h2>
-						<p><?php echo date('M d, Y',strtotime(get_post_meta($post->ID, 'date', true))); ?></p>
+						<p><?php echo get_post_meta($post->ID, 'date', true); ?></p>
 					</div>
 					<?php } ?>
 
-					<?php if (get_the_terms($post->ID, 'provenance')!='') { ?>
-					<div class="provenance">
-						<h2>Provenance:</h2>
-						<ul><?php echo get_the_term_list( $post->ID, 'provenance',
+					<?php if (get_the_terms($post->ID, 'signature')!='') { ?>
+					<div class="signature">
+						<h2>Signatures:</h2>
+						<ul><?php echo get_the_term_list( $post->ID, 'signature',
 '<li>', '', '</li>' ); ?></ul>
 					</div>
 					<?php } ?>
