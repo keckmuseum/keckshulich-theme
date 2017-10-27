@@ -1,0 +1,25 @@
+.single-item-post-type {
+  background-color:$exhibit-detail-body-background;
+}
+.exhibit {
+  background-color:$exhibit-detail-background;
+  height:600px;
+  width: 80%;
+  margin:0 auto;
+  .images {
+    @include grid-column(8);
+    img {
+      @include img-fit(100%,310px);
+    }
+  }
+  .meta {
+    @include grid-column(4);
+
+  }
+  h2 {
+    color: $exhibit-detail-meta-heading-color;
+  }
+  p {
+    color: $white;
+  }
+}

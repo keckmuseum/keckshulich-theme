@@ -51,3 +51,25 @@
     }
   }
 }
+
+@mixin hide-offscreen($reset:false) {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  @if $reset == true {
+    position:static;
+    width:auto;
+    height:auto;
+    overflow:visible;
+  }
+}
+
+@mixin img-fit($max-width:100%,$max-height:310px) {
+  max-height: $max-height;
+  width: auto;
+  max-width: $max-width;
+  height: auto;
+}

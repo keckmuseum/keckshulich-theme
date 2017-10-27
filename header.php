@@ -8,7 +8,8 @@
   <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-      <header id="header" role="banner">
+      <header id="header" role="banner" aria-label="Website Header">
+        <a href="#content" tabindex="1">Skip to Content</a>
         <?php if (get_theme_mod('rm_theme_header_bg')) {
           $header_img_attr = wp_get_attachment_image_src( absint(get_theme_mod('rm_theme_header_bg')),'header_bg'); ?>
           <img src="<?php echo $header_img_attr[0]; ?>" width="<?php echo $header_img_attr[1]; ?>" height="<?php echo $header_img_attr[2]; ?>" alt="" />
@@ -16,11 +17,11 @@
         <div>
           <div>
             <div>
-              <section id="branding">
+              <div id="branding">
                 <div id="site-title">
                   <?php logo("header","full"); ?>
                 </div>
-              </section>
+              </div>
 
               <!-- <button id="menu-button" data-responsive-toggle="menu">
                 <span data-toggle>Menu</span>

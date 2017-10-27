@@ -1,0 +1,37 @@
+.post-type-archive-item-post-type {
+  background-color:$exhibit-listing-body-background;
+}
+.exhibits {
+  >ul {
+    >li {
+      width:80%;
+      .exhibit {
+        background-color:$exhibit-listing-background;
+        height:400px;
+        h2 {
+          @include grid-column(8);
+          height:rem-calc(60px);
+          margin-bottom:0;
+        }
+        .exhibit-images {
+          @include grid-column(8)
+          text-align:center;
+          img {
+            @include img-fit('100%','310px');
+          }
+        }
+        .exhibit-meta {
+          @include grid-column(4)
+          margin-top:rem-calc(-60px);
+          background-color:$exhibit-listing-meta-background;
+          h3 {
+            color:$exhibit-listing-meta-heading-color;
+          }
+          p {
+            color:$white;
+          }
+        }
+      }
+    }
+  }
+}
