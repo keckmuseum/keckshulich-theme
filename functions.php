@@ -31,3 +31,6 @@ function rm_theme_load_scripts()
 /*
  * Custom Image Sizes
  */
+add_image_size( 'bond-detail', 400, 260 );
+add_image_size( 'bond-detail-zoom', 770, 510 );
+add_image_size( 'bond-listing', 350, 240 );
