@@ -6,6 +6,19 @@
   height:600px;
   width: 80%;
   margin:0 auto;
+  >header:first-of-type{
+    @include hide-offscreen();
+    background-color:$light-blue;
+    color:$white;
+    padding:rem-calc(10px);
+    //@include border-radius(rem-calc(10px));
+
+    &:focus-within,&:hover {
+    @include hide-offscreen(true);
+      @include horizontal-center();
+      z-index:10;
+    }
+  }
   .images {
     @include grid-column(8);
     img {

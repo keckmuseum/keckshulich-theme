@@ -89,6 +89,57 @@ $(document).ready(
         // Callback function when items are switched
         // Arguments received: [currentItem, previousItem]
     });
+
+
+
+    // if(
+    //     document.querySelectorAll('.pswp')[0]
+    //     && $('a[href="#view-image"] img')
+    //   ) {
+    //
+    //   var pswpElement = document.querySelectorAll('.pswp')[0];
+    //
+    //
+    //   // build items array
+    //   var items = [];
+    //   $('a[href="#view-image"] img').each(
+    //     function(){
+    //       items.push(
+    //         {
+    //           src:$(this).data("lightbox-image"),
+    //           w:$(this).data("lightbox-image-width"),
+    //           h:$(this).data("lightbox-image-height")
+    //         } );
+    //     }
+    //   );
+    //
+    //   // define options (if needed)
+    //   var options = {
+    //       // optionName: 'option value'
+    //       // for example:
+    //       index: 0 // start at first slide
+    //   };
+    //
+    //   // Initializes and opens PhotoSwipe
+    //   var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+    //
+    //   $('a[href="#view-image"]').click(
+    //     function(e){
+    //       e.preventDefault();
+    //       gallery.init();
+    //     }
+    //   );
+    // }
+
+
+
+
+    // init with options
+    $('.exhibit .images').photoswipe({
+        bgOpacity: 0.01,
+        loop: true
+    });
+
   }
 );
 

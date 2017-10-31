@@ -7,14 +7,25 @@
 get_header(); ?>
 
 <div class="wrap">
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main exhibit" role="main">
+	<div class="content-area">
+		<main id="content" class="site-main exhibit" role="main" tabindex="2">
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
 				//the_title();
 				?>
-				<div class="images">
+				<header role="menubar">
+					<h1><?php echo get_the_term_list( $post->ID, 'company',
+	'', ', ', '' ); ?></h1>
+					<nav>
+						<ul>
+							<li><a href="#bond-images">Bond Images</a></li>
+							<li><a href="#bond-details">Bond Details</a></li>
+						</ul>
+					</nav>
+				</header>
+				<div id="bond-images" class="images" tabindex="3" aria-labelled-by="h2">
+					<h2>Bond Images</h2>
 					<div class="image-front">
 					<?php
 						$image = get_post_meta($post->ID, 'image', true);
@@ -22,11 +33,13 @@ get_header(); ?>
 							$i=0;
 							foreach($image as $item) {
 								$imgArray = wp_prepare_attachment_for_js($item);
-								?>
-									<img
-										src="<?php echo $imgArray['url']; ?>"
-										alt="<?php echo $imgArray['alt']; ?>"
-									/>
+								?><a href="<?php echo $imgArray['url']; ?>" data-size="<?php echo $imgArray['width']; ?>x<?php echo $imgArray['height']; ?>">
+				            <img
+											src="<?php echo $imgArray['url']; ?>"
+											alt="<?php echo $imgArray['alt']; ?>"
+										/>
+				        </a>
+
 								<?php
 								$i++;
 							}
@@ -42,11 +55,12 @@ get_header(); ?>
 								$i=0;
 								foreach($image as $item) {
 									$imgArray = wp_prepare_attachment_for_js($item);
-									?>
-										<img
-											src="<?php echo $imgArray['url']; ?>"
-											alt="<?php echo $imgArray['alt']; ?>"
-										/>
+									?><a href="<?php echo $imgArray['url']; ?>" data-size="<?php echo $imgArray['width']; ?>x<?php echo $imgArray['height']; ?>">
+					            <img
+												src="<?php echo $imgArray['url']; ?>"
+												alt="<?php echo $imgArray['alt']; ?>"
+											/>
+					        </a>
 									<?php
 									$i++;
 								}
@@ -54,49 +68,53 @@ get_header(); ?>
 								echo $image;
 							}  ?>
 						<p>Back</p>
+						<script type="text/javascript">
+
+						</script>
 						</div>
 				</div>
-				<div class="meta">
-					<?php if (get_the_terms($post->ID, 'document-type')!='') { ?>
-					<div class="document-type">
-						<h2>Document Type:</h2>
-						<p><?php echo get_the_term_list( $post->ID, 'document-type',
+				<div id="bond-details" class="meta" tabindex="4" aria-labelled-by="h2">
+					<h2>Bond Details</h2>
+					<?php if (get_the_terms($post->ID, 'theme')!='') { ?>
+					<div class="theme" aria-labelled-by="h3">
+						<h3>Theme:</h3>
+						<p><?php echo get_the_term_list( $post->ID, 'theme',
 '', ', ', '' ); ?></p>
 					</div>
 					<?php } ?>
 
 					<?php if (get_post_meta($post->ID, 'date', true)!='') { ?>
-					<div class="date-issued">
-						<h2>Date Issued:</h2>
+					<div class="date-issued" aria-labelled-by="h3">
+						<h3>Date Issued:</h3>
 						<p><?php echo get_post_meta($post->ID, 'date', true); ?></p>
 					</div>
 					<?php } ?>
 
 					<?php if (get_the_terms($post->ID, 'signature')!='') { ?>
-					<div class="signature">
-						<h2>Signatures:</h2>
+					<div class="signature" aria-labelled-by="h3">
+						<h3>Signatures:</h3>
 						<ul><?php echo get_the_term_list( $post->ID, 'signature',
 '<li>', '', '</li>' ); ?></ul>
 					</div>
 					<?php } ?>
 
 					<?php if (get_post_meta($post->ID, 'location', true)!='') { ?>
-					<div class="location">
-						<h2>Location:</h2>
+					<div class="location" aria-labelled-by="h3">
+						<h3>Location:</h3>
 						<p><?php echo get_post_meta($post->ID, 'location', true); ?></p>
 					</div>
 					<?php } ?>
 
-					<?php if (get_post_meta($post->ID, 'notes', true)!='') { ?>
-					<div class="notes">
-						<h2>Notes:</h2>
-						<p><?php echo get_post_meta($post->ID, 'notes', true); ?></p>
+					<?php if (get_post_meta($post->ID, 'description', true)!='') { ?>
+					<div class="description" aria-labelled-by="h3">
+						<h3>Description:</h3>
+						<p><?php echo get_post_meta($post->ID, 'description', true); ?></p>
 					</div>
 					<?php } ?>
 
 					<?php if (get_post_meta($post->ID, 'additional-detail', true)!='') { ?>
 					<div class="additional-detail">
-						<h2>Additional Detail:</h2>
+						<h3>Additional Detail:</h3>
 						<p><?php //echo custom_boilerplate_metabox_view_list($post->ID, 'additional-detail'); ?></p>
 					</div>
 					<?php } ?>
@@ -178,7 +196,9 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-	<?php get_sidebar(); ?>
+	<?php // get_sidebar(); ?>
 </div><!-- .wrap -->
+
+<?php require('inc/photoswipe-root-elements.php'); ?>
 
 <?php get_footer();

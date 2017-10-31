@@ -12,10 +12,11 @@ header#header {
     //@include border-radius(rem-calc(10px));
 
     &:focus,&:hover,&:active {
-      @include hide-offscreen(true);
+    @include hide-offscreen(true);
       @include horizontal-center();
       z-index:10;
     }
+
   }
   >img:first-of-type {
     display:none;
