@@ -94,7 +94,7 @@ get_header(); ?>
 					<div class="signature" aria-labelled-by="h3">
 						<h3>Signatures:</h3>
 						<ul><?php echo get_the_term_list( $post->ID, 'signature',
-'<li>', '</li></li>', '</li>' ); ?></ul>
+'<li>', '</li><li>', '</li>' ); ?></ul>
 					</div>
 					<?php } ?>
 
