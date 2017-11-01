@@ -1,34 +1,76 @@
 .post-type-archive-item-post-type {
   background-color:$exhibit-listing-body-background;
-}
-.exhibits {
-  >ul {
-    >li {
-      width:80%;
-      .exhibit {
-        background-color:$exhibit-listing-background;
-        height:400px;
-        h2 {
-          @include grid-column(8);
-          height:rem-calc(60px);
-          margin-bottom:0;
-        }
-        .exhibit-images {
-          @include grid-column(8)
-          text-align:center;
-          img {
-            @include img-fit('100%','310px');
+  main {
+    >h1 {
+      @include heading(2);
+      text-align:center;
+      color:$dark-blue;
+    }
+    >p {
+      color:$dark-blue;
+      text-transform:uppercase;
+      text-align:center;
+      margin-bottom:0;
+    }
+  }
+
+  .exhibits {
+    margin-top:rem-calc(60px);
+    >ul {
+      >li {
+        min-width:50%;
+        width:rem-calc(600px);
+        .exhibit {
+          @include flex-grid-row;
+          position:relative;
+          padding: 3%;
+          outline: 1.5px solid $light-blue;
+          outline-offset: -5px;
+          background-color:$exhibit-listing-background;
+          min-height: rem-calc(425px);
+
+          h2 {
+            @include heading(2);
+            text-align:center;
+            @include breakpoint(medium) {
+              @include flex-grid-column(8);
+              position:absolute;
+              left:rem-calc(20px);
+              top:rem-calc(20px);
+              padding:0 rem-calc(20px);
+            }
           }
-        }
-        .exhibit-meta {
-          @include grid-column(4)
-          margin-top:rem-calc(-60px);
-          background-color:$exhibit-listing-meta-background;
           h3 {
-            color:$exhibit-listing-meta-heading-color;
+            @include heading(3);
+            text-align:center;
+            @include underline();
           }
-          p {
-            color:$white;
+          p,li {
+            text-align:center;
+          }
+          .exhibit-images {
+            text-align:center;
+            img {
+              @include img-fit(100%,300px);
+            }
+            @include breakpoint(medium) {
+              @include flex-grid-column(8);
+              position:relative;
+              left:((-100% / $grid-columns) * 4);
+              margin-top:rem-calc(80px);
+            }
+          }
+          .exhibit-meta {
+            background-color:$exhibit-listing-meta-background;
+            padding: 3%;
+            >div+div {
+              margin-top:rem-calc(15px);
+            }
+            @include breakpoint(medium) {
+              @include flex-grid-column(4);
+              position:relative;
+              left:(( 100% / $grid-columns ) * 8);
+            }
           }
         }
       }

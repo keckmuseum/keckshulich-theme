@@ -13,11 +13,11 @@ $(document).ready(
     // );
 
     $('.exhibits').flipster({
-        itemContainer: 'ul',
+        itemContainer: '>ul',
         // [string|object]
         // Selector for the container of the flippin' items.
 
-        itemSelector: 'li',
+        itemSelector: '>li',
         // [string|object]
         // Selector for children of `itemContainer` to flip
 
@@ -136,7 +136,7 @@ $(document).ready(
 
     // init with options
     $('.exhibit .images').photoswipe({
-        bgOpacity: 0.01,
+        bgOpacity: 0.5,
         loop: true
     });
 

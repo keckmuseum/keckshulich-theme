@@ -2,7 +2,7 @@ header#header {
   @include containers();
   position:relative;
   @include breakpoint(medium) {
-    min-height:300px;
+    //min-height:300px;
   }
   >a[href="#content"]{
     @include hide-offscreen();
@@ -36,7 +36,14 @@ header#header {
       position:relative;
         #branding {
           #site-title {
+            &,& a {
+              @include heading(1);
+              color:$dark-blue;
+
+            }
+            margin:rem-calc(20px) 0;
             text-align:center;
+
             @include breakpoint(medium) {
             }
           }

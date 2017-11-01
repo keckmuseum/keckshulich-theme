@@ -15,7 +15,7 @@ get_header(); ?>
 				// the_archive_description( '<div class="taxonomy-description">', '</div>' );
 			?>
 		</header --><!-- .page-header -->
-	<section role="main" aria-labelledby="bond-listing-title">
+	<main role="main" aria-labelledby="bond-listing-title">
 		<h1 id="bond-listing-title">Bond Listing</h1>
 		<p><strong>Swipe left or right to browse the collection.</strong></p>
 		<p><strong>Click on thumbnails for document detail.</strong></p>
@@ -32,6 +32,39 @@ get_header(); ?>
 					<li>
 						<div class="exhibit">
 							<h2><?php the_title(); ?></h2>
+							<div class="exhibit-meta">
+								<?php if (get_post_meta($post->ID, 'date', true)!='') { ?>
+								<div class="date-issued" aria-labelled-by="h3">
+									<h3>Date</h3>
+									<p><?php echo get_post_meta($post->ID, 'date', true); ?></p>
+								</div>
+								<?php } ?>
+
+								<?php if (get_post_meta($post->ID, 'location', true)!='') { ?>
+								<div class="location" aria-labelled-by="h3">
+									<h3>Location</h3>
+									<p><?php echo get_post_meta($post->ID, 'location', true); ?></p>
+								</div>
+								<?php } ?>
+
+								<?php if (get_post_meta($post->ID, 'amount', true)!='') { ?>
+								<div class="amount" aria-labelled-by="h3">
+									<h3>Amount</h3>
+									<p>$<?php echo get_post_meta($post->ID, 'amount', true); ?></p>
+								</div>
+								<?php } ?>
+
+								<?php if (get_the_terms($post->ID, 'signature')!='') { ?>
+								<div class="signature" aria-labelled-by="h3">
+									<h3>Signatures</h3>
+									<ul><?php echo get_the_term_list( $post->ID, 'signature',
+			'<li>', ';</li><li>', '</li>' ); ?></ul>
+								</div>
+								<?php } ?>
+
+
+
+							</div>
 							<div class="exhibit-images">
 								<a href="<?php echo get_permalink(); ?>">
 								<?php
@@ -43,62 +76,22 @@ get_header(); ?>
 										/>
 								</a>
 							</div>
-							<div class="exhibit-meta">
-
-								<?php
-								 if(get_post_meta($post->ID, 'document-type', true)!=''){
-									 ?><h3>Document Type</h3><?php
-									 echo '<p>'.get_post_meta($post->ID, 'document-type', true).'</p>';
-								 }
-								 ?>
-								<?php
-								 if(get_post_meta($post->ID, 'date', true)!=''){
-									 ?><h3>Date Issued</h3><?php
-									 echo '<p>'.date('Y',strtotime(get_post_meta($post->ID, 'date', true))).'</p>';
-								 }
-								 ?>
-								<?php
-								 if(get_post_meta($post->ID, 'provenance', true)!=''){
-									 ?><h3>Provenance</h3><?php
-									 echo '<p>'.custom_boilerplate_metabox_view_list($post->ID, 'provenance').'</p>';
-								 }
-								 ?>
-							 <?php
-								if(get_post_meta($post->ID, 'location', true)!=''){
-									?><h3>Location</h3><?php
-									echo '<p>'.get_post_meta($post->ID, 'location', true).'</p>';
-								}
-								?>
-
-							</div>
 						</div>
 					</li>
 				<?php
-					/*
-					 * Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					// get_template_part( 'template-parts/post/content', get_post_format() );
 
 				endwhile;
-
-				the_posts_pagination( array(
-					'prev_text' => '<span class="screen-reader-text">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
-					'next_text' => '<span class="screen-reader-text">' . __( 'Next page', 'twentyseventeen' ) . '</span>',
-					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyseventeen' ) . ' </span>',
-				) ); ?>
+					?>
 				</ul>
 			<?php else :
 
-				get_template_part( 'template-parts/post/content', 'none' );
 
 			endif; ?>
 
 			</div><!-- #main -->
 		</div><!-- #primary -->
-	</section>
-	<?php get_sidebar(); ?>
+	</main>
+	<!-- <?php get_sidebar(); ?> -->
 </div><!-- .wrap -->
 
 <?php get_footer();

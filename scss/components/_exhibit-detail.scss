@@ -1,38 +1,92 @@
 .single-item-post-type {
-  background-color:$exhibit-detail-body-background;
-}
-.exhibit {
-  background-color:$exhibit-detail-background;
-  height:600px;
-  width: 80%;
-  margin:0 auto;
-  >header:first-of-type{
-    @include hide-offscreen();
-    background-color:$light-blue;
-    color:$white;
-    padding:rem-calc(10px);
-    //@include border-radius(rem-calc(10px));
-
-    &:focus-within,&:hover {
-    @include hide-offscreen(true);
-      @include horizontal-center();
-      z-index:10;
+  background:url(../images/bg-bond-detail.png) top left $exhibit-detail-body-background;
+  background-size:cover;
+  header#header {
+    >div:first-of-type {
+      >div {
+        #branding {
+          #site-title {
+            &,& a {
+              color:$exhibit-detail-meta-heading-color;
+            }
+          }
+        }
+      }
     }
   }
-  .images {
-    @include grid-column(8);
-    img {
-      @include img-fit(100%,310px);
-    }
-  }
-  .meta {
-    @include grid-column(4);
 
-  }
-  h2 {
-    color: $exhibit-detail-meta-heading-color;
-  }
-  p {
-    color: $white;
+  .exhibit {
+    @include flex-grid-row;
+    background-color:rgba($black,0.5);
+    width: 90%;
+    margin:0 auto;
+    padding: 1.5% 2%;
+    outline: 1.5px solid $light-blue;
+    outline-offset: -5px;
+    @include breakpoint(medium) {
+      @include absolute-center();
+    }
+
+    .images {
+      @include breakpoint(medium) {
+        @include flex-grid-column(6);
+        position:relative;
+        left:((-100% / $grid-columns) * 6);
+      }
+
+      img {
+        @include img-fit(100%,310px);
+      }
+      .image-front {
+        margin-bottom:rem-calc(20px);
+      }
+      .image-front,
+      .image-back {
+        p {
+          color:$exhibit-detail-meta-heading-color;
+          text-transform:uppercase;
+          margin:rem-calc(2px) 0 0;
+        }
+      }
+    }
+    .meta {
+      @include breakpoint(medium) {
+        @include flex-grid-column(6);
+        position:relative;
+        left:(( 100% / $grid-columns ) * 6);
+      }
+
+      >header:first-of-type{
+
+      }
+      >div+div {
+        margin-top:rem-calc(15px);
+      }
+    }
+
+    h1 {
+      @include heading(2);
+      margin-bottom:rem-calc(15px);
+    }
+    h2 {
+      @include heading(3);
+      @include underline();
+    }
+    .accession {
+      position:absolute;
+      bottom:rem-calc(-10px);
+      right:rem-calc(-10px);
+      h2,p {
+        font-family: 'Michroma', sans-serif;
+        font-variant: small-caps;
+        display:inline;
+        font-size:rem-calc(10px);
+        color:$light-blue;
+        text-transform:uppercase;
+        &:after {
+          border-bottom:0;
+        }
+      }
+    }
   }
 }
