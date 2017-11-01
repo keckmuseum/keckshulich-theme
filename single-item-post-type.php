@@ -62,6 +62,13 @@ get_header(); ?>
 					</div>
 					<?php } ?>
 
+					<?php if (get_post_meta($post->ID, 'notable-imagery', true)!='') { ?>
+					<div class="notable-imagery" aria-labelled-by="h2">
+						<h2>Notable Bond Imagery:</h2>
+						<p><?php echo get_post_meta($post->ID, 'notable-imagery', true); ?></p>
+					</div>
+					<?php } ?>
+
 					<?php if (get_the_terms($post->ID, 'theme')!='') { ?>
 					<!-- <div class="theme" aria-labelled-by="h2">
 						<h2>Theme:</h2>
