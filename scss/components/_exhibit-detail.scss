@@ -30,6 +30,15 @@
       bottom:rem-calc(80px);
     }
 
+    .back-to-listing {
+      position:absolute;
+      right:rem-calc(-45px);
+      top:rem-calc(0);
+      padding:rem-calc(5px) rem-calc(10px);
+      border:1px solid $white;
+      display:block;
+    }
+
     .images {
       @include breakpoint(medium) {
         @include flex-grid-column(6);
