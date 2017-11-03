@@ -9,7 +9,7 @@ get_header(); ?>
 <div id="content" class="wrap">
 
 	<?php
-	$args = array(  'posts_per_page' => -1);
+	$args = array( 'post_type' => 'item-post-type', 'posts_per_page' => -1, 'order' => 'ASC');
 	$loop = new WP_Query( $args );
 	if ( $loop->have_posts() ) : ?>
 		<!-- header class="page-header">
@@ -27,11 +27,11 @@ get_header(); ?>
 		<div class="content-area">
 			<div class="site-main exhibits">
 			<?php
-			if ( have_posts() ) : ?>
+			if ( $loop->have_posts() ) : ?>
 				<ul>
 				<?php
 				/* Start the Loop */
-				while ( have_posts() ) : the_post(); ?>
+				while ( $loop->have_posts() ) : $loop->the_post(); ?>
 					<li>
 						<div class="exhibit">
 							<h2><?php the_title(); ?></h2>
