@@ -8,7 +8,10 @@ get_header(); ?>
 
 <div id="content" class="wrap">
 
-	<?php if ( have_posts() ) : ?>
+	<?php
+	$args = array(  'posts_per_page' => -1);
+	$loop = new WP_Query( $args );
+	if ( $loop->have_posts() ) : ?>
 		<!-- header class="page-header">
 			<?php
 				// the_archive_title( '<h1 class="page-title">', '</h1>' );
