@@ -30,7 +30,7 @@
           min-height: rem-calc(425px);
 
           h2 {
-            @include heading(2);
+            @include heading(4);
             text-align:center;
             @include breakpoint(medium) {
               @include flex-grid-column(8);
@@ -41,9 +41,10 @@
             }
           }
           h3 {
-            @include heading(3);
+            @include heading(7);
             text-align:center;
             @include underline();
+            word-break:auto;
           }
           p,li {
             text-align:center;
