@@ -35,9 +35,9 @@
             @include breakpoint(medium) {
               @include flex-grid-column(8);
               position:absolute;
-              left:rem-calc(20px);
+              left:rem-calc(10px);
               top:rem-calc(20px);
-              padding:0 rem-calc(20px);
+
             }
           }
           h3 {
