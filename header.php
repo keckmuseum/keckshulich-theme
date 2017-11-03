@@ -38,6 +38,8 @@
                         'walker' => new rm_theme_walker_nav_menu,
                        ) ); */ ?>
               <!-- </nav> -->
+
+              <img class="logo-unr" src="/content/themes/keckshulich/images/logo-unr-blue.png" alt="University of Nevada" />
             </div>
           </div>
         </div>

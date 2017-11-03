@@ -51,6 +51,7 @@ header#header {
             @include breakpoint(medium) {
             }
           }
+
         }
         #menu-button {
           width:100%;
@@ -136,6 +137,14 @@ header#header {
             width:100%;
             z-index:4;
           }
+        }
+
+        .logo-unr {
+          position:absolute;
+          top:rem-calc(10px);
+          right:rem-calc(10px);
+          width:rem-calc(50px);
+          height:rem-calc(50px);
         }
     }
   }
