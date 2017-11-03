@@ -19,12 +19,15 @@
     @include flex-grid-row;
     background-color:rgba($black,0.5);
     width: 90%;
+    max-width:90%;
     margin:0 auto;
     padding: 1.5% 2%;
     outline: 1.5px solid $light-blue;
     outline-offset: -5px;
     @include breakpoint(medium) {
-      @include absolute-center();
+      @include horizontal-center();
+      top:rem-calc(80px);
+      bottom:rem-calc(80px);
     }
 
     .images {
@@ -35,17 +38,42 @@
       }
 
       img {
-        @include img-fit(100%,310px);
+        @include absolute-center;
+
+        @include img-fit(95%,95%);
       }
       .image-front {
         margin-bottom:rem-calc(20px);
       }
       .image-front,
       .image-back {
+        position:absolute;
+        top:0;
+        bottom:50%;
+        width:95%;
+        a {
+          position:relative;
+          display:block;
+          overflow:hidden;
+          width:100%;
+          height:92%;
+          background:rgba($black, 0.6);
+        }
         p {
           color:$exhibit-detail-meta-heading-color;
           text-transform:uppercase;
           margin:rem-calc(2px) 0 0;
+          &.image-position {
+            position:absolute;
+            top:92%;
+          }
+        }
+      }
+      .image-back {
+        top:50%;
+        bottom:0;
+        a {
+
         }
       }
     }
@@ -54,6 +82,8 @@
         @include flex-grid-column(6);
         position:relative;
         left:(( 100% / $grid-columns ) * 6);
+        overflow-y:auto;
+        margin-bottom:rem-calc(10px);
       }
 
       >header:first-of-type{
@@ -74,11 +104,10 @@
     }
     .accession {
       position:absolute;
-      bottom:rem-calc(-10px);
-      right:rem-calc(-10px);
+      bottom:rem-calc(5px);
+      right:rem-calc(15px);
       h2,p {
-        font-family: 'Michroma', sans-serif;
-        font-variant: small-caps;
+        @include bodycopy;
         display:inline;
         font-size:rem-calc(10px);
         color:$light-blue;

@@ -17,7 +17,9 @@ function rm_theme_load_styles()
   wp_enqueue_style( 'rm_theme_app_css', get_stylesheet_directory_uri() . '/css/app.css' ); //Includes foundation 6
   wp_enqueue_style( 'font-diplomata', '//fonts.googleapis.com/css?family=Diplomata+SC' );
   wp_enqueue_style( 'font-michroma', '//fonts.googleapis.com/css?family=Michroma' );
-  wp_enqueue_style( 'font-quicksand', '//fonts.googleapis.com/css?family=Quicksand:300,400,500,700' );
+  // wp_enqueue_style( 'font-quicksand', '//fonts.googleapis.com/css?family=Quicksand:300,400,500,700' );
+  wp_enqueue_style( 'font-raleway', '//fonts.googleapis.com/css?family=Raleway' );
+
   wp_enqueue_style( 'jquery_flipster',get_stylesheet_directory_uri() . '/bower_components/jquery-flipster/dist/jquery.flipster.min.css');
   wp_enqueue_style( 'jquery_photoswipe',get_stylesheet_directory_uri() . '/bower_components/photoswipe/dist/photoswipe.css');
   wp_enqueue_style( 'jquery_photoswipe_skin',get_stylesheet_directory_uri() . '/bower_components/photoswipe/dist/default-skin/default-skin.css');

@@ -77,12 +77,7 @@ get_header(); ?>
 					</div> -->
 					<?php } ?>
 
-					<?php if (get_post_meta($post->ID, 'accession', true)!='') { ?>
-					<div class="accession" aria-labelled-by="h2">
-						<h2>Accession No:</h2>
-						<p><?php echo get_post_meta($post->ID, 'accession', true); ?></p>
-					</div>
-					<?php } ?>
+
 
 
 
@@ -121,7 +116,7 @@ get_header(); ?>
 						} else {
 							echo $image;
 						}  ?>
-					<p>Front</p>
+					<p class="image-position">Front</p>
 					</div>
 					<div class="image-back">
 						<?php
@@ -142,7 +137,7 @@ get_header(); ?>
 							} else {
 								echo $image;
 							}  ?>
-						<p>Back</p>
+						<p class="image-position">Back</p>
 						<script type="text/javascript">
 
 						</script>
@@ -154,7 +149,12 @@ get_header(); ?>
 
 			endwhile; // End of the loop.
 			?>
-
+			<?php if (get_post_meta($post->ID, 'accession', true)!='') { ?>
+			<div class="accession" aria-labelled-by="h2">
+				<h2>Accession No:</h2>
+				<p><?php echo get_post_meta($post->ID, 'accession', true); ?></p>
+			</div>
+			<?php } ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 	<?php // get_sidebar(); ?>

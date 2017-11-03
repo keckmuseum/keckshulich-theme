@@ -33,8 +33,7 @@
 }
 @mixin bodycopy() {
   color: $white;
-  font-family: 'Michroma', sans-serif;
-  font-variant: small-caps;
+  font-family: 'Raleway','Arial','Helvetica', sans-serif;
   margin-bottom:rem-calc(15px);
 }
 @mixin underline(){
