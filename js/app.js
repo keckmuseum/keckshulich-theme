@@ -130,8 +130,19 @@ $(document).ready(
     	},
       on: {
         init: function(){
-          // console.log('loaded');
-          exhibitBrowserOverlay('loaded');
+          var swiperWrapper = document.getElementById("exhibit-0");
+
+          var observer = new MutationObserver(function(mutations) {
+            console.log('styles changed');
+            exhibitBrowserOverlay('loaded');
+          });
+          observer.observe(swiperWrapper, {
+            attributes: true,
+            attributeFilter: ['style'] });
+
+          swiperWrapper.dataset.selectContentVal = 1;
+
+          // exhibitBrowserOverlay('loaded');
         },
       }
     }
@@ -222,7 +233,6 @@ function exhibitBrowserInit() {
     swiper = new Swiper('.swiper-container', swiperArgs )
     console.log('init');
   } else {
-    swiper.destroy();
     swiper = new Swiper('.swiper-container', swiperArgs )
     // swiper.update();
     // swiperDelay = window.setTimeout(function(){
@@ -251,14 +261,22 @@ function exhibitBrowserInit() {
 
 function exhibitBrowserOverlay(action) {
   if(action === 'close') {
-    $('.exhibit-browser').fadeOut('fast');
+    console.log('close')
+    $('.exhibit-browser').fadeTo( "slow" , 0.001);
+    $('.exhibit-browser').hide();
     $('.exhibit-browser-overlay').fadeOut('fast');
     $('.exhibit-browser-overlay .loading').fadeIn('slow');
+    swiper.destroy();
   } else if(action === 'loaded') {
-    $('.exhibit-browser-overlay .loading').fadeOut('fast');
-    $('.exhibit-browser').fadeIn('fast');
+    console.log('loaded');
+      $('.exhibit-browser').css('opacity',1);
   } else {
+    console.log('open');
     $('.exhibit-browser-overlay').fadeIn('fast');
+
+    $('.exhibit-browser').show();
+    $('.exhibit-browser').css('opacity',0.001);
+
   }
 }
 function rebuildExhibitGrid(themeId=false,openCarousel=false) {
