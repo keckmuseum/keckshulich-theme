@@ -204,7 +204,7 @@ function exhibitBrowserOverlay(action) {
 }
 function rebuildExhibitGrid(themeId=false,openCarousel=false) {
   if(themeId) {
-    argumentString = '?theme=' + themeId;
+    argumentString = '?per_page=100&theme=' + themeId;
   } else {
     argumentString = buildArgumentString();
   }
@@ -258,15 +258,15 @@ function buildArgumentString() {
     }
   );
 
-  var argumentString = '?';
+  var argumentString = '?per_page=100&';
   filterArguments.forEach( function(argument) {
-    if(argumentString != '?') {
+    if(argumentString != '?per_page=100&') {
       argumentString += '&';
     }
     argumentString += argument[0]+'='+argument[1];
   });
 
-  if(argumentString === '?') {
+  if(argumentString === '?per_page=100&') {
     argumentString='';
   }
 
