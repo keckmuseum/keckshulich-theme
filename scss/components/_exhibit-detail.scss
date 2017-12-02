@@ -110,6 +110,7 @@
     h1 {
       @include heading(1);
       font-size:rem-calc(50px);
+      line-height:rem-calc(50px);
       margin-top:rem-calc(7px);
       margin-bottom:rem-calc(40px);
     }
@@ -117,6 +118,8 @@
       @include heading(3);
       font-size:rem-calc(30px);
       @include underline();
+      padding-bottom:rem-calc(5px);
+
       margin-bottom:rem-calc(8px);
     }
     .accession {
