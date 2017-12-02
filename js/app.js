@@ -108,7 +108,7 @@ $(document).ready(
       simulateTouch: false,
     	centeredSlides: true,
     	slidesPerView: 'auto',
-    	initialSlide: 1,
+    	initialSlide: 0,
     	keyboardControl: true,
     	preventClicks: true,
     	preventClicksPropagation: true,
@@ -198,7 +198,7 @@ $(document).ready(
       }
     );
 
-    $('.exhibit-browser').on('click',
+    $('.exhibit-browser, .exhibit-browser .back-to-listing').on('click',
       function(e){
         console.log(e.target);
         if($(e.target).parents('.swiper-container').length === 0) {

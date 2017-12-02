@@ -22,6 +22,15 @@
   color:$medium-gray;
 
 }
+@mixin back-button() {
+  display:block;
+  font-weight:bold;
+  font-size:rem-calc(50px);
+  color:rgba($white, 0.7);
+  &:hover, &:focus {
+    color:rgba($white, 0.9);
+  }
+}
 @mixin containers($small-columns:11,$medium-columns:12,$small-position:center,$medium-position:0,$small-gutters:null,$medium-gutters:null,$inner-1:'>div:first-of-type',$inner-2:'>div:first-of-type') {
   #{$inner-1} {
     @include grid-row();

@@ -20,6 +20,14 @@ body .flipster {
 }
 .exhibit-browser {
   padding-top:rem-calc(90px);
+  .back-to-listing {
+    @include back-button();
+    position:absolute;
+    right: rem-calc(30px);
+    top: rem-calc(20px);
+    //padding:rem-calc(5px) rem-calc(10px);
+    //border:1px solid $white;
+  }
 }
 .exhibits-carousel {
   width:100%;
@@ -107,18 +115,22 @@ body .flipster {
           }
         }
         .exhibit-meta {
+          text-align:center;
           >div {
             background-color:$exhibit-listing-meta-background;
             padding: rem-calc(20px);
-            height:90%;
+            height:87%;
+
             >div+div {
               margin-top:rem-calc(15px);
             }
           }
           >a {
             @include exhibit-button;
-            display:block;
-            margin:0 auto;
+            margin: 30px auto;
+            width: auto;
+            display: inline-block;
+            padding: 12px;
           }
           @include breakpoint(medium) {
             @include flex-grid-column(4);
@@ -165,6 +177,26 @@ body .flipster {
 .query-error {
   text-align:center;
 }
+.swiper-button-prev,.swiper-button-next {
+  width: 150px;
+  height: 93px;
+  background-size: auto;
+  opacity: 0.7;
+  &:hover, &:focus {
+    opacity: 0.9;
+  }
+  &.swiper-button-disabled {
+    opacity: 0.1;
+    pointer-events: auto;
+  }
+}
+.swiper-button-prev {
+  background-image:url(../images/left-hand.png);
+}
+.swiper-button-next {
+  background-image:url(../images/right-hand.png);
+}
+
 
 .exhibit-thumbnails {
   margin-top:rem-calc(100px);
@@ -212,27 +244,27 @@ body .flipster {
 }
 
 
-.flipster--flat-scale .flipster__container,
-.flipster--flat-scale .flipster__item,
-.flipster--flat-scale .flipster__item__content {
-  transition: all 400ms ease-in-out;
-}
-.flipster--flat-scale .flipster__item--past,
-.flipster--flat-scale .flipster__item--future {
-  opacity: 0.9;
-}
-.flipster--flat-scale .flipster__item__content {
-  box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.5);
-}
-.flipster--flat-scale .flipster__item--past .flipster__item__content {
-  transform: scale(0.3);
-}
-.flipster--flat-scale .flipster__item--past-1 .flipster__item__content {
-  transform: scale(0.5);
-}
-.flipster--flat-scale .flipster__item--future .flipster__item__content {
-  transform: scale(0.3);
-}
-.flipster--flat-scale .flipster__item--future-1 .flipster__item__content {
-  transform: scale(0.5);
-}
+//.flipster--flat-scale .flipster__container,
+//.flipster--flat-scale .flipster__item,
+//.flipster--flat-scale .flipster__item__content {
+//  transition: all 400ms ease-in-out;
+//}
+//.flipster--flat-scale .flipster__item--past,
+//.flipster--flat-scale .flipster__item--future {
+//  opacity: 0.9;
+//}
+//.flipster--flat-scale .flipster__item__content {
+//  box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.5);
+//}
+//.flipster--flat-scale .flipster__item--past .flipster__item__content {
+//  transform: scale(0.3);
+//}
+//.flipster--flat-scale .flipster__item--past-1 .flipster__item__content {
+//  transform: scale(0.5);
+//}
+//.flipster--flat-scale .flipster__item--future .flipster__item__content {
+//  transform: scale(0.3);
+//}
+//.flipster--flat-scale .flipster__item--future-1 .flipster__item__content {
+//  transform: scale(0.5);
+//}

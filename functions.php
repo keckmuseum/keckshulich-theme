@@ -13,7 +13,6 @@ function rm_theme_parent_theme_enqueue_styles() {
 add_action( 'wp_enqueue_scripts', 'rm_theme_load_styles' );
 function rm_theme_load_styles()
 {
-  wp_enqueue_style( 'rm_theme_app_css', get_stylesheet_directory_uri() . '/css/app.css' ); //Includes foundation 6
   // wp_enqueue_style( 'font-diplomata', '//fonts.googleapis.com/css?family=Diplomata+SC' );
   // wp_enqueue_style( 'font-michroma', '//fonts.googleapis.com/css?family=Michroma' );
   // wp_enqueue_style( 'font-quicksand', '//fonts.googleapis.com/css?family=Quicksand:300,400,500,700' );
@@ -25,6 +24,8 @@ function rm_theme_load_styles()
   wp_enqueue_style( 'jquery_photoswipe',get_stylesheet_directory_uri() . '/bower_components/photoswipe/dist/photoswipe.css');
   wp_enqueue_style( 'jquery_photoswipe_skin',get_stylesheet_directory_uri() . '/bower_components/photoswipe/dist/default-skin/default-skin.css');
   wp_enqueue_style( 'swiper',get_stylesheet_directory_uri() . '/bower_components/swiper/dist/css/swiper.min.css');
+
+  wp_enqueue_style( 'rm_theme_app_css', get_stylesheet_directory_uri() . '/css/app.css' ); //Includes foundation 6
 }
 add_action( 'wp_enqueue_scripts', 'rm_theme_load_scripts' );
 function rm_theme_load_scripts()

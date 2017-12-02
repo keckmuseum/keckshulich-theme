@@ -1,6 +1,5 @@
 .single-item-post-type {
-  background:url(../images/bg-bond-detail.png) top left $exhibit-detail-body-background;
-  background-size:cover;
+  @include background($medium-blue, $dark-blue, url(../images/bg-bond-tonopah.png));
   header#header {
     >div:first-of-type {
       >div {
@@ -31,14 +30,12 @@
     }
 
     .back-to-listing {
+      @include back-button();
       position:absolute;
-      right:rem-calc(-45px);
-      top:rem-calc(0);
-      padding:rem-calc(5px) rem-calc(10px);
-      border:1px solid $white;
-      display:block;
-      font-weight:bold;
-      font-size:rem-calc(20px);
+      right: rem-calc(-50px);
+      top: rem-calc(-10px);
+      //padding:rem-calc(5px) rem-calc(10px);
+      //border:1px solid $white;
     }
 
     .images {
@@ -103,15 +100,24 @@
       >div+div {
         margin-top:rem-calc(15px);
       }
+      >div {
+        >p, >li {
+          margin-left:rem-calc(15px);
+        }
+      }
     }
 
     h1 {
-      @include heading(2);
-      margin-bottom:rem-calc(15px);
+      @include heading(1);
+      font-size:rem-calc(50px);
+      margin-top:rem-calc(7px);
+      margin-bottom:rem-calc(40px);
     }
     h2 {
       @include heading(3);
+      font-size:rem-calc(30px);
       @include underline();
+      margin-bottom:rem-calc(8px);
     }
     .accession {
       position:absolute;
@@ -120,7 +126,7 @@
       h2,p {
         @include bodycopy;
         display:inline;
-        font-size:rem-calc(10px);
+        font-size:rem-calc(14px);
         color:$light-blue;
         text-transform:uppercase;
         &:after {

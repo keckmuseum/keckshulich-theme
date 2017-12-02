@@ -9,6 +9,7 @@
   <p><strong>Click on thumbnails for document detail.</strong></p> -->
 </div>
 <div class="exhibit-browser">
+  <a class="back-to-listing" href="/bonds/"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
   <div class="content-area">
     <div class="swiper-container site-main exhibits exhibits-carousel">
       <ul class="swiper-wrapper">
@@ -17,9 +18,6 @@
         <!-- If we need navigation buttons -->
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
-
-      <!-- If we need scrollbar -->
-      <div class="swiper-scrollbar"></div>
 
     </div><!-- #main -->
     <!-- <div class="exhibit-thumbnails">
