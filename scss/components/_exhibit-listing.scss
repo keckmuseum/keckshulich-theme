@@ -1,83 +1,238 @@
-.post-type-archive-item-post-type {
-  background-color:$exhibit-listing-body-background;
-  main {
-    >h1 {
-      @include heading(2);
-      text-align:center;
-      color:$dark-blue;
+//.post-type-archive-item-post-type,
+//.tax-bond-themes {
+//  background:url(../images/bg-bond-listing.png) no-repeat $exhibit-listing-body-background;
+//  main {
+//    >h1 {
+//      @include heading(2);
+//      text-align:center;
+//      color:$dark-blue;
+//    }
+//    >p {
+//      color:$dark-blue;
+//      text-transform:uppercase;
+//      text-align:center;
+//      margin-bottom:0;
+//    }
+//  }
+//}
+body .flipster {
+  padding:60px 0;
+}
+.exhibit-browser {
+  padding-top:rem-calc(90px);
+}
+.exhibits-carousel {
+  width:100%;
+  padding:rem-calc(10px) 0 !important;
+  >ul {
+    &.one-item {
+      transform:translateX(0) !important;
     }
-    >p {
-      color:$dark-blue;
-      text-transform:uppercase;
-      text-align:center;
-      margin-bottom:0;
-    }
-  }
+    >li {
+      box-sizing: border-box;
+      margin:0 auto;
+      overflow:visible;
+      min-width:60%;
+      width:rem-calc(600px);
+      .exhibit {
+        position:relative;
+        outline: 2px solid #dbdbdb;
+        outline-offset: -6px;
+        border: 6px solid $medium-blue;
+        background-color:$exhibit-listing-background;
+        //background: rgba(91,110,141,1);
+        background: -moz-linear-gradient(top, $medium-blue 0%, $dark-blue 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, $medium-blue), color-stop(100%, $dark-blue));
+        background: -webkit-linear-gradient(top, $medium-blue 0%, $dark-blue 100%);
+        background: -o-linear-gradient(top, $medium-blue 0%, $dark-blue 100%);
+        background: -ms-linear-gradient(top, $medium-blue 0%, $dark-blue 100%);
+        background: linear-gradient(to bottom, $medium-blue 0%, $dark-blue 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5b6e8d', endColorstr='#224272', GradientType=0 );
 
-  .exhibits {
-    margin-top:rem-calc(60px);
-    >ul {
-      >li {
-        min-width:50%;
-        width:rem-calc(600px);
-        .exhibit {
-          @include flex-grid-row;
+        .inner {
           position:relative;
-          padding: 3%;
-          outline: 1.5px solid $light-blue;
-          outline-offset: -5px;
-          background-color:$exhibit-listing-background;
-          min-height: rem-calc(425px);
-
-          h2 {
-            @include heading(4);
-            text-align:center;
-            @include breakpoint(medium) {
-              @include flex-grid-column(8);
-              position:absolute;
-              left:rem-calc(10px);
-              top:rem-calc(20px);
-
-            }
+          @include flex-grid-row;
+          padding: rem-calc(40px) rem-calc(20px) rem-calc(40px) rem-calc(10px);
+          min-height: rem-calc(690px);
+          max-width:100%;
+        }
+        h2 {
+          @include heading(4);
+          text-align:center;
+          color:$white;
+          line-height:rem-calc(45px);
+          @include breakpoint(medium) {
+            @include grid-column(8);
+            position:absolute;
+            left:rem-calc(10px);
+            top:rem-calc(40px);
+            font-size: 40px;
+            text-align: center;
+            width:none;
           }
-          h3 {
-            @include heading(7);
-            text-align:center;
-            @include underline();
-            word-break:auto;
+        }
+        h3 {
+          @include heading(1);
+          text-align:left;
+          @include underline();
+          word-break:auto;
+          margin-bottom:rem-calc(5px);
+          color:$white;
+        }
+        h3+p,
+        h3+ul li {
+          margin-left:rem-calc(10px);
+        }
+        p,li {
+          text-align:left;
+          color:$medium-tan;
+        }
+        ul {
+          margin:0;
+        }
+        .exhibit-images {
+          background-color:rgba($black, 0.2);
+          border-radius:rem-calc(5px);
+          text-align:center;
+          margin-top:rem-calc(100px);
+          img {
+            @include absolute-center;
+            @include img-fit(100%,495px);
           }
-          p,li {
-            text-align:center;
+          @include breakpoint(medium) {
+            @include flex-grid-column(8);
+            position:relative;
+            left:((-100% / $grid-columns) * 4);
+            //margin-top:rem-calc(80px);
           }
-          ul {
-            margin:0;
-          }
-          .exhibit-images {
-            text-align:center;
-            img {
-              @include img-fit(100%,300px);
-            }
-            @include breakpoint(medium) {
-              @include flex-grid-column(8);
-              position:relative;
-              left:((-100% / $grid-columns) * 4);
-              margin-top:rem-calc(80px);
-            }
-          }
-          .exhibit-meta {
+        }
+        .exhibit-meta {
+          >div {
             background-color:$exhibit-listing-meta-background;
-            padding: 3%;
+            padding: rem-calc(20px);
+            height:90%;
             >div+div {
               margin-top:rem-calc(15px);
             }
-            @include breakpoint(medium) {
-              @include flex-grid-column(4);
-              position:relative;
-              left:(( 100% / $grid-columns ) * 8);
-            }
+          }
+          >a {
+            @include exhibit-button;
+            display:block;
+            margin:0 auto;
+          }
+          @include breakpoint(medium) {
+            @include flex-grid-column(4);
+            position:relative;
+            left:(( 100% / $grid-columns ) * 8);
           }
         }
       }
     }
+    li .exhibit .inner:before,
+    li .exhibit:before,
+    li .exhibit .inner:after,
+    li .exhibit:after {
+      content: ' ';
+      position: absolute;
+      background: url(../images/bg-bond-slider-corner.png) no-repeat 0 0;
+      background-size:100%;
+      width:65px;
+      height:65px;
+      z-index:2;
+    }
+    li .exhibit .inner:before {
+      top:-16px;
+      left:-16px;
+      transform:rotate(180deg);
+    }
+    li .exhibit:before {
+      bottom:-16px;
+      left:-16px;
+      transform:rotate(90deg);
+    }
+    li .exhibit .inner:after {
+      top:-16px;
+      right:-16px;
+      transform:rotate(-90deg);
+    }
+    li .exhibit:after {
+      bottom:-16px;
+      right:-16px;
+    }
   }
+}
+
+.query-error {
+  text-align:center;
+}
+
+.exhibit-thumbnails {
+  margin-top:rem-calc(100px);
+  ul {
+    @include breakpoint(medium) {
+      @include flex-grid-row;
+    }
+    li {
+      max-height:rem-calc(70px);
+
+      @include breakpoint(medium) {
+        @include flex-grid-column();
+        text-align:center;
+      }
+      a {
+        display:block;
+        overflow:hidden;
+        margin:0 auto;
+        width:rem-calc(70px);
+        height:rem-calc(70px);
+        img {
+          @include img-fit(200%,auto);
+        }
+      }
+    }
+  }
+}
+.exhibits-grid {
+  ul {
+    @include breakpoint(medium) {
+      @include flex-grid-row;
+    }
+    li {
+      @include breakpoint(medium) {
+        @include flex-grid-column(2);
+        text-align:center;
+      }
+      a {
+        img {
+          @include img-fit(100%,100px);
+        }
+      }
+    }
+  }
+}
+
+
+.flipster--flat-scale .flipster__container,
+.flipster--flat-scale .flipster__item,
+.flipster--flat-scale .flipster__item__content {
+  transition: all 400ms ease-in-out;
+}
+.flipster--flat-scale .flipster__item--past,
+.flipster--flat-scale .flipster__item--future {
+  opacity: 0.9;
+}
+.flipster--flat-scale .flipster__item__content {
+  box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.5);
+}
+.flipster--flat-scale .flipster__item--past .flipster__item__content {
+  transform: scale(0.3);
+}
+.flipster--flat-scale .flipster__item--past-1 .flipster__item__content {
+  transform: scale(0.5);
+}
+.flipster--flat-scale .flipster__item--future .flipster__item__content {
+  transform: scale(0.3);
+}
+.flipster--flat-scale .flipster__item--future-1 .flipster__item__content {
+  transform: scale(0.5);
 }

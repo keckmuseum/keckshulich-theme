@@ -70,13 +70,7 @@ get_header(); ?>
 					</div>
 					<?php } ?>
 
-					<?php if (get_the_terms($post->ID, 'theme')!='') { ?>
-					<!-- <div class="theme" aria-labelled-by="h2">
-						<h2>Theme:</h2>
-						<p><?php echo get_the_term_list( $post->ID, 'theme',
-'', ', ', '' ); ?></p>
-					</div> -->
-					<?php } ?>
+
 
 
 

@@ -10,11 +10,14 @@
 //
 //}
 
-@mixin heading($size:2) {
-  font-family: 'Diplomata SC', cursive;
-  //transform: scale(1, 1.5);
-  //transform-origin:top left;
-  color: $exhibit-detail-meta-heading-color;
+@mixin heading($size:2, $serif:false, $color:$exhibit-detail-meta-heading-color) {
+  @if $serif {
+    font-family:'Libre Baskerville', "Times New Roman", times serif;
+  }
+  @else {
+    font-family: 'Bourbon-Regular', Arial, Helvetica, sans-serif;
+  }
+  color: $color;
   @if $size == 1 {
     font-size:rem-calc(25px);
     line-height:rem-calc(28px);
@@ -59,11 +62,11 @@
 @mixin underline(){
   position:relative;
   &:after {
-    border-bottom:1px dotted $exhibit-detail-meta-heading-color;
+    border-bottom:1.5px dotted $white;
     content:' ';
     width: 100%;
     position: absolute;
-    bottom: -0.1rem;
+    bottom: -0.25rem;
     left: 0;
   }
 }
