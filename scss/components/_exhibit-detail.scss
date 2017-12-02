@@ -139,3 +139,28 @@
     }
   }
 }
+
+.pswp__top-bar {
+  height:8vh;
+  .pswp__button {
+    height:8vh;
+    background-image: none;
+    position:relative;
+    font: normal normal normal 50px/1 FontAwesome;
+    margin:rem-calc(10px) rem-calc(20px) 0 0;
+    &:after{
+      color:$white;
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+    }
+    &.pswp__button--close:after {
+      content:'\f057';
+    }
+    &.pswp__button--zoom:after {
+      content:'\f00e';
+    }
+  }
+}
