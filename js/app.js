@@ -123,6 +123,13 @@ $(document).ready(
       }
     );
 
+    //temporarily disable these links.
+    $('#bond-details.meta a, a[href="https://www.unr.edu"]').click(
+      function(e){
+        e.preventDefault();
+      }
+    );
+
     // $('.view-detail').on('click',
     //   function(e){
     //     e.preventDefault();

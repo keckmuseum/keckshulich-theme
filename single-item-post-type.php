@@ -112,7 +112,7 @@ get_header(); ?>
 							} else {
 								echo $image;
 							}  ?>
-						<p class="image-position">Front</p>
+						<p class="image-position">Front - Touch to enlarge</p>
 						</div>
 					<?php }
 					if(get_post_meta($post->ID, 'image-back', true)) { ?>
@@ -135,7 +135,7 @@ get_header(); ?>
 								} else {
 									echo $image;
 								}  ?>
-							<p class="image-position">Back</p>
+							<p class="image-position">Back - Touch to enlarge</p>
 							<script type="text/javascript">
 
 							</script>
