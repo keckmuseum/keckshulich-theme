@@ -6,102 +6,6 @@ function isUndefined(value){
 $(document).ready(
   function() {
 
-    // flipsterArgs = {
-    //     itemContainer: '>ul',
-    //     // [string|object]
-    //     // Selector for the container of the flippin' items.
-    //
-    //     itemSelector: '>li',
-    //     // [string|object]
-    //     // Selector for children of `itemContainer` to flip
-    //
-    //     start: 'center',
-    //     // ['center'|number]
-    //     // Zero based index of the starting item, or use 'center' to start in the middle
-    //
-    //     fadeIn: 400,
-    //     // [milliseconds]
-    //     // Speed of the fade in animation after items have been setup
-    //
-    //     loop: false,
-    //     // [true|false]
-    //     // Loop around when the start or end is reached
-    //
-    //     autoplay: false,
-    //     // [false|milliseconds]
-    //     // If a positive number, Flipster will automatically advance to next item after that number of milliseconds
-    //
-    //     pauseOnHover: true,
-    //     // [true|false]
-    //     // If true, autoplay advancement will pause when Flipster is hovered
-    //
-    //     style: 'flat-scale',
-    //     // [coverflow|carousel|flat|...]
-    //     // Adds a class (e.g. flipster--coverflow) to the flipster element to switch between display styles
-    //     // Create your own theme in CSS and use this setting to have Flipster add the custom class
-    //
-    //     spacing: -0.67,
-    //     // [number]
-    //     // Space between items relative to each item's width. 0 for no spacing, negative values to overlap
-    //
-    //     click: true,
-    //     // [true|false]
-    //     // Clicking an item switches to that item
-    //
-    //     keyboard: true,
-    //     // [true|false]
-    //     // Enable left/right arrow navigation
-    //
-    //     scrollwheel: true,
-    //     // [true|false]
-    //     // Enable mousewheel/trackpad navigation; up/left = previous, down/right = next
-    //
-    //     touch: true,
-    //     // [true|false]
-    //     // Enable swipe navigation for touch devices
-    //
-    //     nav: false,
-    //     // [true|false|'before'|'after']
-    //     // If not false, Flipster will build an unordered list of the items
-    //     // Values true or 'before' will insert the navigation before the items, 'after' will append the navigation after the items
-    //
-    //     buttons: false,
-    //     // [true|false|'custom']
-    //     // If true, Flipster will insert Previous / Next buttons with SVG arrows
-    //     // If 'custom', Flipster will not insert the arrows and will instead use the values of `buttonPrev` and `buttonNext`
-    //
-    //     buttonPrev: 'Previous',
-    //     // [text|html]
-    //     // Changes the text for the Previous button
-    //
-    //     buttonNext: 'Next',
-    //     // [text|html]
-    //     // Changes the text for the Next button
-    //
-    //     onItemSwitch: false
-    //     // [function]
-    //     // Callback function when items are switched
-    //     // Arguments received: [currentItem, previousItem]
-    // }
-
-    // var xPos = null;
-    // var yPos = null;
-    // $(window).on('touchmove',function(e){
-    //     var touch = e.originalEvent.touches[ 0 ];
-    //     oldX = xPos;
-    //     oldY = yPos;
-    //     xPos = touch.pageX;
-    //     yPos = touch.pageY;
-    //     if ( oldX == null && oldY == null ) {
-    //         return false;
-    //     }
-    //     else {
-    //         if ( Math.abs( oldX-xPos ) > Math.abs( oldY-yPos ) ) {
-    //             e.preventDefault();
-    //             return false;
-    //         }
-    //     }
-    // });
     swiperArgs = {
     	effect: 'coverflow',
     	// loop: true,
@@ -130,6 +34,7 @@ $(document).ready(
     	},
       on: {
         init: function(){
+
           var swiperWrapper = document.getElementById("exhibit-0");
 
           var observer = new MutationObserver(function(mutations) {
@@ -141,14 +46,13 @@ $(document).ready(
             attributeFilter: ['style'] });
 
           swiperWrapper.dataset.selectContentVal = 1;
-
-          // exhibitBrowserOverlay('loaded');
         },
       }
     }
     // var swiper = new Swiper('.exhibit', swiperArgs });
 
     swiper = false;
+    itemsError = false;
 
     // init with options
     $('.exhibit .images').photoswipe({
@@ -164,15 +68,15 @@ $(document).ready(
     //   }
     // );
 
-    $('.exhibits-filters select').each(
-      function() {
-        $(this).on('change',
-          function(e) {
-            // rebuildExhibitGrid();
-          }
-        );
-      }
-    );
+    // $('.exhibits-filters select').each(
+    //   function() {
+    //     $(this).on('change',
+    //       function(e) {
+    //         // rebuildExhibitGrid();
+    //       }
+    //     );
+    //   }
+    // );
     $('.exhibits-filters a[href="#search"]').click(
       function(e) {
         e.preventDefault();
@@ -201,13 +105,13 @@ $(document).ready(
       }
     );
 
-    $('a[href="#exhibit-browser"]').on('click',
-      function(e){
-        e.preventDefault();
-        exhibitBrowserOverlay();
-        //exhibits.flipster('index');
-      }
-    );
+    // $('a[href="#exhibit-browser"]').on('click',
+    //   function(e){
+    //     e.preventDefault();
+    //     exhibitBrowserOverlay();
+    //     //exhibits.flipster('index');
+    //   }
+    // );
 
     $('.exhibit-browser, .exhibit-browser .back-to-listing').on('click',
       function(e){
@@ -223,7 +127,7 @@ $(document).ready(
     //   function(e){
     //     e.preventDefault();
     //     $.cookie('slider-position',$(this).parents('li').index());
-    //     window.location.href = $(this).attr('href');
+    //     // window.location.href = $(this).attr('href');
     //   });
 
 });
@@ -266,10 +170,16 @@ function exhibitBrowserOverlay(action) {
     $('.exhibit-browser').hide();
     $('.exhibit-browser-overlay').fadeOut('fast');
     $('.exhibit-browser-overlay .loading').fadeIn('slow');
-    swiper.destroy();
+    if(itemsError===false){
+      swiper.destroy();
+    } else {
+      $('body').removeClass('items-error');
+      itemsError=false;
+    }
   } else if(action === 'loaded') {
     console.log('loaded');
       $('.exhibit-browser').css('opacity',1);
+      console.log('?');
   } else {
     console.log('open');
     $('.exhibit-browser-overlay').fadeIn('fast');
@@ -292,13 +202,19 @@ function rebuildExhibitGrid(themeId=false,openCarousel=false) {
       context: document.body
     }).done(function(data) {
       console.log('ajax done: '+data);
-      gridBuild(data);
+      // gridBuild(data);
       browserBuild(data);
       if(openCarousel){
+        console.log('opencarousel true');
+        if(itemsError===false){
+          exhibitBrowserInit();
+          exhibitBrowserOverlay();
+        } else {
+          exhibitBrowserOverlay();
+          exhibitBrowserOverlay('loaded');
+        }
 
-        exhibitBrowserInit();
 
-        exhibitBrowserOverlay();
       }
     }); // Ajax Bonds done
   } else {
@@ -377,13 +293,17 @@ function gridBuild(data) {
 function browserBuild(data) {
   $( '.exhibit-browser .exhibits > ul' ).html('');
   // $( '.exhibit-browser .exhibit-thumbnails > ul' ).html('');
-
+  console.log('browserbuilding');
   if(data.length > 0) {
+    console.log('items found');
     $.each(data,function(i){
       setBrowserItems(this, i);
     }); // Each Ajax Bond
     console.log('broserBuild done');
   } else {
+    console.log('no items found');
+    itemsError=true;
+    $('body').addClass('items-error');
     $('.exhibit-browser .swiper-wrapper').html(
       '<li class="swiper-slide"><div class="query-error"><p>No results. Try changing the filter options.</p></div></li>'
     );

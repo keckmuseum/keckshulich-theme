@@ -17,6 +17,12 @@
 //}
 body .flipster {
   padding:60px 0;
+
+}
+body.items-error {
+  .swiper-button-prev,.swiper-button-next,.exhibit-browser-overlay .loading {
+    display:none;
+  }
 }
 .exhibit-browser {
   padding-top:rem-calc(90px);
