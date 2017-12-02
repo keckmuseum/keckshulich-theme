@@ -1,0 +1,26 @@
+.exhibits-filters {
+  @include breakpoint(medium) {
+    @include flex-grid-row;
+  }
+  .filter {
+    @include breakpoint(medium) {
+      @include flex-grid-column();
+    }
+    select {
+      @include heading(2, true);
+      color:$dark-blue;
+      text-transform:uppercase;
+      height:auto;
+      padding:rem-calc(10px);
+      @include standard-border;
+      outline: 1px dotted $medium-blue;
+      outline-offset: -6px;
+      background-position-x:right;
+      option {
+        text-transform:none;
+        @include bodycopy();
+        color:$dark-blue;
+      }
+    }
+  }
+}

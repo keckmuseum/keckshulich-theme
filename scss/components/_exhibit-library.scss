@@ -1,0 +1,100 @@
+.post-type-archive-item-post-type,
+.tax-bond-themes {
+  @include background($medium-blue, $dark-blue, url(../images/bg-bond-tonopah.png));
+  main {
+    >h1 {
+      @include heading(2);
+      text-align:center;
+      color:$dark-blue;
+    }
+    >p {
+      color:$dark-blue;
+      text-transform:uppercase;
+      text-align:center;
+      margin-bottom:0;
+    }
+  }
+}
+
+.exhibit-library {
+  max-width:80%;
+  margin: 0 auto;
+  @include box-style-shells-dashes(); // Requires 3 divs nested inside each other
+
+  p, li, a {
+    color:$medium-gray;
+  }
+  .instructions {
+    @include heading(1,true,$medium-gray);
+    font-size:rem-calc(20px);
+    text-align:left;
+    width:100%;
+    margin-bottom:rem-calc(20px);
+  }
+  .divider {
+    @include rule(outline);
+    margin:rem-calc(25px) 0;
+  }
+
+
+  a[href="#clear"],a[href="#search"] {
+    font-family:'Libre Baskerville', "Times New Roman", times serif;
+    font-style:italic;
+    font-size:rem-calc(10px);
+    text-transform:uppercase;
+    vertical-align:middle;
+    line-height:rem-calc(25px);
+    height:rem-calc(45px);
+    padding:rem-calc(10px) rem-calc(10px);
+    position:relative;
+    z-index:4;
+    margin-left:rem-calc(10px);
+  }
+  a[href="#search"] {
+    font-size:rem-calc(14px);
+    background-color:$medium-tan;
+    border-radius:rem-calc(5px);
+  }
+
+  >div {
+    >div {
+      >div {
+        padding:rem-calc(40px);
+        background:url(../images/bg-miner.png) left bottom no-repeat $white;
+        background-size:contain;
+        @include breakpoint(xxlarge) {
+          background-size:auto;
+        }
+
+        @include flex-grid-row();
+        max-width:100%;
+        >div {
+          @include grid-column-offset(3);
+          @include flex-grid-column(9);
+        }
+      }
+    }
+  }
+}
+
+.exhibit-browser-overlay,
+.exhibit-browser {
+  display:none;
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:rgba($black, 0.9);
+  z-index:10;
+}
+.exhibit-browser-overlay {
+  .loading {
+    @include absolute-center;
+    width: 100px;
+    height: 100px;
+  }
+}
+.exhibit-browser {
+  background: transparent;
+}

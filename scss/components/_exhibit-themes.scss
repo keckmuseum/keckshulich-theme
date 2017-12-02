@@ -1,0 +1,50 @@
+.exhibit-themes {
+  @include breakpoint(medium) {
+    @include flex-grid-row;
+  }
+  li {
+    @include breakpoint(medium) {
+      @include flex-grid-column(4);
+      text-align:center;
+      margin-bottom:rem-calc(30px);
+    }
+    a {
+      @include background($light-blue, $medium-blue);
+      height:8vw;
+      display:block;
+      border-radius:15px;
+      position:relative;
+      overflow:hidden;
+      @include standard-border;
+      @include standard-box-shadow;
+      @include standard-text-shadow;
+      img {
+        @include absolute-center();
+        @include img-fit(200%,200%);
+        z-index:2;
+      }
+      span {
+        @include absolute-center();
+        z-index:4;
+        @include heading(1);
+        font-size:rem-calc(45px);
+        line-height:rem-calc(45px);
+      }
+      &:after {
+        content: ' ';
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        z-index:3;
+        background:rgba($medium-blue, 0.8);
+      }
+      &:hover, &:focus {
+        &:after {
+          background:rgba($medium-blue, 0.9);
+        }
+      }
+    }
+  }
+}
