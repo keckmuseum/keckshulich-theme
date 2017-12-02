@@ -16,7 +16,7 @@ get_header(); ?>
 				<div>
 					<div>
 						<div>
-							<p class="instructions">Chose multiple categories for sorting in the Advanced Search.</p>
+							<p class="instructions">Choose multiple categories for sorting in the Advanced Search.</p>
 							<?php require('inc/exhibits-filters.php'); ?>
 							<!-- <a href="#exhibit-browser">Open in Exhibit Browser</a> -->
 
