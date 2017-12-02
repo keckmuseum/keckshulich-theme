@@ -129,6 +129,12 @@ $(document).ready(
         e.preventDefault();
       }
     );
+    $('#site-title a').click(
+      function(e){
+        e.preventDefault();
+        window.location.href='/bonds/';
+      }
+    );
 
     // $('.view-detail').on('click',
     //   function(e){
