@@ -1,4 +1,5 @@
 header#header {
+  text-align:right;
   @include containers();
   position:relative;
   @include breakpoint(medium) {
@@ -32,7 +33,9 @@ header#header {
     }
   }
   >div:first-of-type {
+    max-width: 1550px;
     >div {
+
       position:relative;
         #branding {
           #site-title {
@@ -51,7 +54,8 @@ header#header {
             @include breakpoint(medium) {
             }
           }
-
+          display:inline-block;
+          width:20%;
         }
         #menu-button {
           width:100%;
@@ -140,11 +144,9 @@ header#header {
         }
 
         .logo-unr {
-          position:absolute;
-          top:rem-calc(10px);
-          right:rem-calc(10px);
-          width:rem-calc(50px);
-          height:rem-calc(50px);
+          display:inline-block;
+          width: 15%;
+          margin: -8px 0 0 10px;
         }
     }
   }
