@@ -80,6 +80,7 @@ $(document).ready(
     $('.exhibits-filters a[href="#search"]').click(
       function(e) {
         e.preventDefault();
+        $.removeCookie('current-theme', { path: '/' });
         rebuildExhibitGrid(
           false,
           true
@@ -97,11 +98,14 @@ $(document).ready(
     $('.exhibit-themes a').click(
       function(e) {
         e.preventDefault();
+        $.removeCookie('filter-theme', { path: '/' });
+        $.removeCookie('filter-date-range', { path: '/' });
+        $.removeCookie('filter-region', { path: '/' });
         rebuildExhibitGrid(
           $(this).data('theme-id'),
           true
         );
-        $.cookie('current-theme',$(this).data('theme-id'));
+        $.cookie('current-theme',$(this).data('theme-id'),{ path: '/' });
       }
     );
 
@@ -113,15 +117,21 @@ $(document).ready(
     //   }
     // );
 
-    $('.exhibit-browser, .exhibit-browser .back-to-listing').on('click',
+    $('.exhibit-browser').on('click',
       function(e){
         console.log(e.target);
         if($(e.target).parents('.swiper-container').length === 0) {
-          // e.preventDefault();
           exhibitBrowserOverlay('close');
         }
       }
     );
+
+    // $('.exhibit-browser .back-to-listing').attr('href','http://google.com/').click(
+    //   function(e){
+    //     e.preventDefault();
+    //     exhibitBrowserOverlay('close');
+    //   }
+    // );
 
     //temporarily disable these links.
     $('#bond-details.meta a, a[href="https://www.unr.edu"]').click(
@@ -129,6 +139,7 @@ $(document).ready(
         e.preventDefault();
       }
     );
+
     $('#site-title a').click(
       function(e){
         e.preventDefault();
@@ -136,27 +147,78 @@ $(document).ready(
       }
     );
 
-    // $('.view-detail').on('click',
-    //   function(e){
-    //     e.preventDefault();
-    //     $.cookie('slider-position',$(this).parents('li').index());
-    //     // window.location.href = $(this).attr('href');
-    //   });
+    $(document).on('click', '.view-detail',
+      function(e){
+        e.preventDefault();
+        console.log($(this).parents('li').index());
+        $.cookie('slider-position',$(this).parents('li').index(),{ path: '/' });
+        window.location.href = $(this).attr('href');
+      });
+
+      $('.back-to-listing').click(
+        function(e) {
+          e.preventDefault();
+          $.cookie('back-to-listing',1,{ path: '/' });
+          window.location.href='/bonds/';
+        }
+      );
+
+      var pathname = window.location.pathname;
+      var backToListing = $.cookie('back-to-listing');
+      var sliderPosition = $.cookie('slider-position');
+      var currentTheme = $.cookie('current-theme');
+
+      var filterTheme = $.cookie('filter-theme');
+      var filterDateRange = $.cookie('filter-date-range');
+      var filterRegion = $.cookie('filter-region');
+
+      if(typeof pathname != "undefined"
+        && pathname === '/bonds/'
+        && typeof backToListing != "undefined"
+        && backToListing === '1'
+        && typeof sliderPosition != "undefined"
+      ) {
+        $.removeCookie('back-to-listing', { path: '/' });
+        $.removeCookie('slider-position', { path: '/' });
+        if(typeof currentTheme != "undefined") {
+          rebuildExhibitGrid(
+            currentTheme,
+            true,
+            sliderPosition
+          );
+        } else if(typeof filterTheme != "undefined"
+          && typeof filterDateRange != "undefined"
+          && typeof filterRegion != "undefined") {
+            $('.exhibits-filters select#theme option[name="'+filterTheme+'"]').prop('selected', true);
+            $('.exhibits-filters select#date-range option[name="'+filterDateRange+'"]').prop('selected', true);
+            $('.exhibits-filters select#region option[name="'+filterRegion+'"]').prop('selected', true);
+
+            rebuildExhibitGrid(
+              false,
+              true,
+              sliderPosition
+            );
+        }
+      }
+
 
 });
 
-function exhibitBrowserInit() {
+function exhibitBrowserInit(sliderPosition=false) {
   if(swiper===false) {
-    swiper = new Swiper('.swiper-container', swiperArgs )
-    console.log('init');
+    swiper = new Swiper('.swiper-container', swiperArgs );
+    console.log('init at '+sliderPosition);
   } else {
-    swiper = new Swiper('.swiper-container', swiperArgs )
+    swiper = new Swiper('.swiper-container', swiperArgs );
+
     // swiper.update();
     // swiperDelay = window.setTimeout(function(){
     //   swiper.update();console.log('reindex');
     // }, 5000);
   }
-
+  if(sliderPosition) {
+    swiper.slideTo(sliderPosition);
+  }
 
   if( $('.exhibits-carousel > ul > li').length === 1 ) {
     $('.exhibits-carousel > ul').addClass('one-item');
@@ -192,17 +254,16 @@ function exhibitBrowserOverlay(action) {
   } else if(action === 'loaded') {
     console.log('loaded');
       $('.exhibit-browser').css('opacity',1);
-      console.log('?');
+      // console.log('?');
   } else {
     console.log('open');
     $('.exhibit-browser-overlay').fadeIn('fast');
 
     $('.exhibit-browser').show();
     $('.exhibit-browser').css('opacity',0.001);
-
   }
 }
-function rebuildExhibitGrid(themeId=false,openCarousel=false) {
+function rebuildExhibitGrid(themeId=false,openCarousel=false,sliderPosition=false) {
   if(themeId) {
     argumentString = '?per_page=100&theme=' + themeId;
   } else {
@@ -220,8 +281,14 @@ function rebuildExhibitGrid(themeId=false,openCarousel=false) {
       if(openCarousel){
         console.log('opencarousel true');
         if(itemsError===false){
-          exhibitBrowserInit();
-          exhibitBrowserOverlay();
+          if(sliderPosition===false) {
+            exhibitBrowserInit();
+            exhibitBrowserOverlay('open');
+          } else {
+            exhibitBrowserInit(sliderPosition);
+            exhibitBrowserOverlay('open');
+          }
+
         } else {
           exhibitBrowserOverlay();
           exhibitBrowserOverlay('loaded');
@@ -249,6 +316,7 @@ function buildArgumentString() {
     function() {
       name = $(this).attr('id');
       value = $(this).find('option:selected').attr('name');
+      $.cookie('filter-'+name,value,{ path: '/' });
       if(value>0){
         filterArguments.push( Array(
           name,

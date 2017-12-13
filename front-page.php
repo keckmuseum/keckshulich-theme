@@ -31,7 +31,7 @@ if ($content!='') { ?>
   <?php endwhile; endif; ?>
 </main>
 
-<?php require('inc/exhibit-theme-listing.php'); ?>
+<?php //require('inc/exhibit-theme-listing.php'); ?>
 
 <?php } ?>
 <?php get_footer(); ?>
