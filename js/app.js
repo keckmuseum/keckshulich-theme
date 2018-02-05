@@ -506,12 +506,46 @@ function getImage(i, image, imgSelector) {
   return 0;
 }
 
-function setImages(data, i, imgSelector) {
-  if( !isUndefined(data.media_details.sizes['bond-listing-large'].source_url) || data.media_details.sizes['bond-listing-large'].source_url==='' ) {
-    $( imgSelector ).find('img').attr('src',data.media_details.sizes['bond-listing-large'].source_url);
-    if( !isUndefined(data.alt_text) || data.alt_text==='' ) {
-      $( imgSelector ).find('img').attr('alt',data.alt_text);
+function setupInterchange(data, imgSelector, interchangeSize, wpimageSize) {
+  if( !isUndefined(data.media_details.sizes[wpimageSize].source_url) || data.media_details.sizes[wpimageSize].source_url==='' ) {
+    rules='';
+    if(!isUndefined(interchange)){
+      rules=interchange.rules+',';
     }
+
+    if($.isArray(imgSelector)) {
+      imgSelector.forEach (
+        function(item, index){
+          var interchange = new Foundation.Interchange($(item).find('img'), {
+            rules: [
+              rules+"["+data.media_details.sizes[wpimageSize].source_url+", "+interchangeSize+"]"
+            ]
+           });
+         }
+        );
+      }
+      else {
+        var interchange = new Foundation.Interchange($(imgSelector).find('img'), {
+          rules: [
+            rules+"["+data.media_details.sizes[wpimageSize].source_url+", "+interchangeSize+"]"
+          ]
+         });
+         console.log($(imgSelector).find('img'));
+         console.log( interchange.rules) ;
+      }
+    }
+}
+
+function setImages(data, i, imgSelector) {
+  if( !isUndefined(data.media_details.sizes['s'].source_url) || data.media_details.sizes['s'].source_url==='' ) {
+    $( imgSelector ).find('img').attr('src',data.media_details.sizes['s'].source_url);
+  }
+  setupInterchange(data, imgSelector, 'small', 'xs');
+  setupInterchange(data, imgSelector, 'medium', 's');
+
+
+  if( !isUndefined(data.alt_text) || data.alt_text==='' ) {
+    $( imgSelector ).find('img').attr('alt',data.alt_text);
   }
   return 0;
 }
