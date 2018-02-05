@@ -101,7 +101,7 @@ get_header(); ?>
 									$imgArray = wp_prepare_attachment_for_js($item);
 									?><a href="<?php echo $imgArray['url']; ?>" data-size="<?php echo $imgArray['width']; ?>x<?php echo $imgArray['height']; ?>">
 					            <img
-												src="<?php echo $imgArray['url']; ?>"
+												src="<?php echo wp_get_attachment_image_src($item, 'xs')[0] ?>"
 												alt="<?php echo $imgArray['alt']; ?>"
 											/>
 					        </a>
@@ -125,7 +125,7 @@ get_header(); ?>
 										$imgArray = wp_prepare_attachment_for_js($item);
 										?><a href="<?php echo $imgArray['url']; ?>" data-size="<?php echo $imgArray['width']; ?>x<?php echo $imgArray['height']; ?>">
 						            <img
-													src="<?php echo $imgArray['url']; ?>"
+													src="<?php echo wp_get_attachment_image_src($item, 'xs')[0] ?>"
 													alt="<?php echo $imgArray['alt']; ?>"
 												/>
 						        </a>
