@@ -39,7 +39,7 @@
                        ) ); */ ?>
               <!-- </nav> -->
 
-              <a href="https://www.unr.edu"><img class="logo-unr" src="/content/themes/keckshulich/images/logo-unr-white.png" alt="University of Nevada, Reno" /></a>
+              <a class="logo-unr" href="https://www.unr.edu"><img src="/content/themes/keckshulich/images/logo-unr-white.png" alt="University of Nevada, Reno" /></a>
             </div>
           </div>
         </div>

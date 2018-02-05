@@ -47,7 +47,10 @@ body.items-error {
       margin:0 auto;
       overflow:visible;
       min-width:60%;
-      width:rem-calc(600px);
+      width:90%;
+      @include breakpoint(large) {
+        width:rem-calc(600px);
+      }
       .exhibit {
         position:relative;
         outline: 2px solid #dbdbdb;
@@ -65,10 +68,13 @@ body.items-error {
 
         .inner {
           position:relative;
-          @include flex-grid-row;
           padding: rem-calc(40px) rem-calc(20px) rem-calc(40px) rem-calc(10px);
-          min-height: rem-calc(690px);
+
           max-width:100%;
+          @include breakpoint(medium) {
+            min-height: rem-calc(690px);
+            @include flex-grid-row;
+          }
         }
         h2 {
           @include heading(4);
@@ -108,12 +114,15 @@ body.items-error {
           background-color:rgba($black, 0.2);
           border-radius:rem-calc(5px);
           text-align:center;
-          margin-top:rem-calc(100px);
+
           img {
-            @include absolute-center;
-            @include img-fit(100%,495px);
+            @include breakpoint(medium) {
+              @include absolute-center;
+              @include img-fit(100%,495px);
+            }
           }
           @include breakpoint(medium) {
+            margin-top:rem-calc(100px);
             @include flex-grid-column(8);
             position:relative;
             left:((-100% / $grid-columns) * 4);
@@ -122,6 +131,7 @@ body.items-error {
         }
         .exhibit-meta {
           text-align:center;
+          display:none;
           >div {
             background-color:$exhibit-listing-meta-background;
             padding: rem-calc(20px);
@@ -139,6 +149,7 @@ body.items-error {
             padding: 12px;
           }
           @include breakpoint(medium) {
+            display:block;
             @include flex-grid-column(4);
             position:relative;
             left:(( 100% / $grid-columns ) * 8);

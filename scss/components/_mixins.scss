@@ -143,28 +143,68 @@
     position: absolute;
     background: url(../images/corner-shell-sprial.png) no-repeat 0 0;
     background-size:100%;
-    width:177px;
-    height:173px;
     z-index:3;
+    width: 50px;
+    height: 50px;
+    @include breakpoint(medium) {
+      width:80px;
+      height:80px;
+    }
+    @include breakpoint(large) {
+      width:177px;
+      height:173px;
+    }
   }
   &>div:before {
-    top:-47px;
-    left:-50px;
+    top: -20px;
+    left: -20px;
     transform:rotate(180deg);
+    @include breakpoint(medium) {
+      top: -25px;
+      left: -25px;
+    }
+    @include breakpoint(large) {
+      top:-47px;
+      left:-50px;
+    }
   }
   &:before {
-    bottom:-22px;
-    left:-50px;
+    bottom:-5px;
+    left:-20px;
     transform:rotate(90deg);
+    @include breakpoint(medium) {
+      bottom:-10px;
+      left:-25px;
+    }
+    @include breakpoint(large) {
+      bottom:-22px;
+      left:-50px;
+    }
   }
   &>div:after {
-    top:-47px;
-    right:-50px;
+    top:-20px;
+    right:-20px;
     transform:rotate(-90deg);
+    @include breakpoint(medium) {
+      top:-25px;
+      right:-25px;
+    }
+    @include breakpoint(large) {
+      top:-47px;
+      right:-50px;
+    }
   }
   &:after {
-    bottom:-22px;
-    right:-50px;
+    bottom:-5px;
+    right:-20px;
+    @include breakpoint(medium) {
+      bottom:-10px;
+      right:-25px;
+    }
+    @include breakpoint(medium) {
+      bottom:-22px;
+      right:-50px;
+    }
   }
   >div {
     >div {

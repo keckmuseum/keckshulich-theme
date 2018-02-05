@@ -35,8 +35,11 @@ header#header {
   >div:first-of-type {
     max-width: 1550px;
     >div {
-
       position:relative;
+      >div {
+        @include flex-grid-row();
+        max-width:100%;
+      }
         #branding {
           #site-title {
             &,& a {
@@ -47,15 +50,37 @@ header#header {
             margin:rem-calc(20px) 0;
             text-align:center;
 
-            @include breakpoint(medium) {
-            }
           }
           #site-description {
             @include breakpoint(medium) {
             }
           }
           display:inline-block;
-          width:20%;
+          @include flex-grid-column(6);
+          @include breakpoint(medium) {
+            @include flex-grid-column(3);
+            @include grid-column-offset(6);
+          }
+          @include breakpoint(large) {
+            @include flex-grid-column(2);
+            @include grid-column-offset(8);
+          }
+        }
+        .logo-unr {
+          display:inline-block;
+          position:relative;
+          @include flex-grid-column(6);
+          @include breakpoint(medium) {
+            display: inline-block;
+            @include flex-grid-column(3);
+          }
+          @include breakpoint(large) {
+            @include flex-grid-column(2);
+          }
+          >img {
+            @include absolute-center();
+            width:80%;
+          }
         }
         #menu-button {
           width:100%;
@@ -143,11 +168,7 @@ header#header {
           }
         }
 
-        .logo-unr {
-          display:inline-block;
-          width: 15%;
-          margin: -8px 0 0 10px;
-        }
+
     }
   }
 

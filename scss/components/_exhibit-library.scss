@@ -17,10 +17,12 @@
 }
 
 .exhibit-library {
-  max-width:80%;
+  max-width:84%;
   margin: 0 auto;
   @include box-style-shells-dashes(); // Requires 3 divs nested inside each other
-
+  @include breakpoint(medium) {
+    max-width:80%;
+  }
   p, li, a {
     color:$medium-gray;
   }
@@ -37,31 +39,18 @@
   }
 
 
-  a[href="#clear"],a[href="#search"] {
-    font-family:'Libre Baskerville', "Times New Roman", times serif;
-    font-style:italic;
-    font-size:rem-calc(10px);
-    text-transform:uppercase;
-    vertical-align:middle;
-    line-height:rem-calc(25px);
-    height:rem-calc(45px);
-    padding:rem-calc(10px) rem-calc(10px);
-    position:relative;
-    z-index:4;
-    margin-left:rem-calc(10px);
-  }
-  a[href="#search"] {
-    font-size:rem-calc(14px);
-    background-color:$medium-tan;
-    border-radius:rem-calc(5px);
-  }
+
 
   >div {
     >div {
       >div {
-        padding:rem-calc(40px);
-        background:url(../images/bg-miner.png) left bottom no-repeat $white;
-        background-size:contain;
+        padding:rem-calc(10px) 0;
+        background-color:$white;
+        @include breakpoint(medium) {
+          background:url(../images/bg-miner.png) left bottom no-repeat $white;
+          background-size:contain;
+          padding:rem-calc(40px);
+        }
         @include breakpoint(xxlarge) {
           background-size:auto;
         }
@@ -69,8 +58,11 @@
         @include flex-grid-row();
         max-width:100%;
         >div {
-          @include grid-column-offset(3);
-          @include flex-grid-column(9);
+          @include flex-grid-column(12);
+          @include breakpoint(xxlarge) {
+            @include grid-column-offset(3);
+            @include flex-grid-column(9);
+          }
         }
       }
     }

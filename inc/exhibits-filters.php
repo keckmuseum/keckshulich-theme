@@ -10,6 +10,8 @@
   <div class="filter">
     <?php custom_boilerplate_taxonomy_selector('region', '--Region--'); ?>
   </div>
-  <a href="#search">Search</a>
-  <a href="#clear">Clear</a>
+  <div class="actions">
+    <a href="#search">Search</a>
+    <a href="#clear">Clear</a>
+  </div>
 </div>

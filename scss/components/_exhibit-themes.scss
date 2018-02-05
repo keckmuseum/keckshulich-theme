@@ -3,10 +3,14 @@
     @include flex-grid-row;
   }
   li {
+    margin:0 0 rem-calc(10px);
     @include breakpoint(medium) {
-      @include flex-grid-column(4);
+      @include flex-grid-column(6);
       text-align:center;
       margin-bottom:rem-calc(30px);
+    }
+    @include breakpoint(large) {
+      @include flex-grid-column(4);
     }
     a {
       @include background($light-blue, $medium-blue);
@@ -15,6 +19,7 @@
       border-radius:15px;
       position:relative;
       overflow:hidden;
+      min-height:rem-calc(100px);
       @include standard-border;
       @include standard-box-shadow;
       @include standard-text-shadow;
@@ -28,8 +33,19 @@
         @include absolute-center();
         z-index:4;
         @include heading(1);
-        font-size:rem-calc(45px);
-        line-height:rem-calc(45px);
+        font-size:rem-calc(35px);
+        line-height:rem-calc(35px);
+        text-align: center;
+        @include breakpoint(medium) {
+          font-size:rem-calc(27px);
+          line-height:rem-calc(29px);
+
+        }
+        @include breakpoint(1710px) {
+          text-align: left;
+          font-size:rem-calc(45px);
+          line-height:rem-calc(45px);
+        }
       }
       &:after {
         content: ' ';

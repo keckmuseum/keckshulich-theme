@@ -2,8 +2,11 @@
   @include breakpoint(medium) {
     @include flex-grid-row;
   }
-  .filter {
-    @include breakpoint(medium) {
+  .filter, .actions {
+    margin:0 0 rem-calc(10px);
+    width:100%;
+    @include breakpoint(large) {
+      margin: 0;
       @include flex-grid-column();
     }
     select {
@@ -21,6 +24,46 @@
         @include bodycopy();
         color:$dark-blue;
       }
+      @include breakpoint(medium) {
+        font-size:rem-calc(14px);
+      }
+      @include breakpoint(xxlarge) {
+        font-size:rem-calc(22px);
+      }
+    }
+  }
+  .filter {
+    //@include breakpoint(900px) {
+    //  margin: 0;
+    //  @include flex-grid-column();
+    //}
+  }
+  .actions {
+    text-align:center;
+    margin:rem-calc(15px) 0 0;
+    @include breakpoint(large) {
+      @include flex-grid-column(4);
+    }
+    a[href="#clear"],a[href="#search"] {
+      font-family:'Libre Baskerville', "Times New Roman", times serif;
+      font-style:italic;
+      font-size:rem-calc(10px);
+      text-transform:uppercase;
+      vertical-align:middle;
+      line-height:rem-calc(25px);
+      height:rem-calc(45px);
+      padding:rem-calc(10px) rem-calc(10px);
+      position:relative;
+      z-index:4;
+      margin:0;
+      @include breakpoint (medium) {
+        margin:0 0 0 rem-calc(10px);
+      }
+    }
+    a[href="#search"] {
+      font-size:rem-calc(14px);
+      background-color:$medium-tan;
+      border-radius:rem-calc(5px);
     }
   }
 }

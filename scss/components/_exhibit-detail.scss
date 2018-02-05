@@ -17,13 +17,16 @@
   .exhibit {
     @include flex-grid-row;
     background-color:rgba($black,0.5);
-    width: 90%;
-    max-width:90%;
+    width: 95%;
+    max-width:95%;
     margin:0 auto;
-    padding: 1.5% 2%;
+    padding: 1.5% 5%;
     outline: 1.5px solid $light-blue;
     outline-offset: -5px;
     @include breakpoint(medium) {
+      width: 90%;
+      max-width:90%;
+      padding: 1.5% 2%;
       @include horizontal-center();
       top:rem-calc(120px);
       bottom:rem-calc(80px);
@@ -31,34 +34,43 @@
 
     .back-to-listing {
       @include back-button();
+      font-size:rem-calc(40px);
       position:absolute;
-      right: rem-calc(-50px);
-      top: rem-calc(-10px);
-      //padding:rem-calc(5px) rem-calc(10px);
-      //border:1px solid $white;
+      right: 9px;
+      top: 40px;
+      @include breakpoint(medium) {
+        font-size:rem-calc(50px);
+        right: rem-calc(-50px);
+        top: rem-calc(-10px);
+      }
     }
 
     .images {
+      text-align:center;
       @include breakpoint(medium) {
+        text-align:left;
         @include flex-grid-column(6);
         position:relative;
         left:((-100% / $grid-columns) * 6);
       }
 
       img {
-        @include absolute-center;
-
         @include img-fit(95%,95%);
+        @include breakpoint(medium) {
+          @include absolute-center;
+        }
       }
       .image-front {
         margin-bottom:rem-calc(20px);
       }
       .image-front,
       .image-back {
-        position:absolute;
-        top:0;
-        bottom:50%;
         width:95%;
+        @include breakpoint(medium) {
+          position:absolute;
+          top:0;
+          bottom:50%;
+        }
         a {
           position:relative;
           display:block;
@@ -72,8 +84,10 @@
           text-transform:uppercase;
           margin:rem-calc(2px) 0 0;
           &.image-position {
-            position:absolute;
-            top:92%;
+            @include breakpoint(medium) {
+              position:absolute;
+              top:92%;
+            }
           }
         }
       }
@@ -123,9 +137,11 @@
       margin-bottom:rem-calc(8px);
     }
     .accession {
-      position:absolute;
-      bottom:rem-calc(5px);
-      right:rem-calc(15px);
+      @include breakpoint(medium) {
+        position:absolute;
+        bottom:rem-calc(5px);
+        right:rem-calc(15px);
+      }
       h2,p {
         @include bodycopy;
         display:inline;
