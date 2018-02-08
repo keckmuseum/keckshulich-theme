@@ -1,6 +1,13 @@
 .post-type-archive-item-post-type,
 .tax-bond-themes {
-  @include background($medium-blue, $dark-blue, url(../images/bg-bond-tonopah.png));
+  @include background($medium-blue, $dark-blue, url(../images/bg-bond-tonopah-500h.png));
+  background-size: cover;
+  @media screen and (min-height: 500px) {
+    background-image:url(../images/bg-bond-tonopah-800h.png);
+  }
+  @media screen and (min-height: 800px) {
+    background-image:url(../images/bg-bond-tonopah.png);
+  }
   main {
     >h1 {
       @include heading(2);
