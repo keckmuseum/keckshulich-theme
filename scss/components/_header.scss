@@ -62,8 +62,8 @@ header#header {
             @include grid-column-offset(6);
           }
           @include breakpoint(large) {
-            @include flex-grid-column(2);
-            @include grid-column-offset(8);
+            @include flex-grid-column(3);
+            @include grid-column-offset(6);
           }
         }
         .logo-unr {
@@ -75,7 +75,7 @@ header#header {
             @include flex-grid-column(3);
           }
           @include breakpoint(large) {
-            @include flex-grid-column(2);
+            @include flex-grid-column(3);
           }
           >img {
             @include absolute-center();
