@@ -2,13 +2,13 @@
   <!-- /wp-json/wp/v2/bonds/?bond-themes=17&bond-signatures=10 -->
 
   <div class="filter">
-    <?php cpth_taxonomy_selector('theme', '--Theme--'); ?>
+    <?php custom_boilerplate_taxonomy_selector('theme', '--Theme--'); ?>
   </div>
   <div class="filter">
-    <?php cpth_taxonomy_selector('date-range', '--Date Range--'); ?>
+    <?php custom_boilerplate_taxonomy_selector('date-range', '--Date Range--'); ?>
   </div>
   <div class="filter">
-    <?php cpth_taxonomy_selector('region', '--Region--'); ?>
+    <?php custom_boilerplate_taxonomy_selector('region', '--Region--'); ?>
   </div>
   <div class="actions">
     <a href="#search">Search</a>
