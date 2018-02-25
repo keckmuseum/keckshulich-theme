@@ -12,7 +12,7 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
     <li>
       <a href="/bond-themes/<?php echo $term->slug; ?>/" data-theme-id="<?php echo $term->term_id; ?>">
         <?php if(get_term_meta( $term->term_taxonomy_id,'theme-button-image')) { ?>
-          <img src="<?php echo get_term_meta( $term->term_taxonomy_id,'theme-button-image')[0]; ?>" alt="" />
+          <img src="<?php echo wp_get_attachment_image_src(get_term_meta($term->term_taxonomy_id,'theme-button-image')[0][0],'full')[0]; ?>" alt="" />
         <?php } ?>
         <span>
         <?php if(get_term_meta( $term->term_taxonomy_id,'theme-button-label')) { ?>

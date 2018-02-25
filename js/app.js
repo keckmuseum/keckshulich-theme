@@ -442,7 +442,7 @@ function setBrowserItems(item, i) {
   //     <img src="placeholder.png" alt="Loading...">\
   //   </a>\
   // </li>');
-
+  console.log(item);
   getImage(i, item.image[0][0], [
     // '.exhibit-browser .exhibit-thumbnails [href="#exhibit-'+i+'"]',
     '.exhibit-browser .exhibits #exhibit-'+i+' .exhibit-images'
