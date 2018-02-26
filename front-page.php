@@ -30,8 +30,7 @@ if ($content!='') { ?>
     <?php if ( ! post_password_required() ) comments_template( '', true ); ?>
   <?php endwhile; endif; ?>
 </main>
-
-<?php //require('inc/exhibit-theme-listing.php'); ?>
+<?php require('inc/block-narrative-listing.php'); ?>
 
 <?php } ?>
 <?php get_footer(); ?>
