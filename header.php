@@ -27,7 +27,7 @@
                 <span data-toggle>Menu</span>
               </button>
 
-              <nav id="menu" role="navigation"> -->
+              <nav id="menu" role="navigation">
 
                 <?php wp_nav_menu( array(
                         'theme_location' => 'main-menu',
@@ -35,12 +35,13 @@
                         //'menu_id' => 'nav',
                         'walker' => new rm_theme_walker_nav_menu,
                        ) ); ?>
-               <div id="search">
-                <?php get_search_form(); ?>
-               </div>
               </nav>
 
-              <a class="logo-unr" href="https://www.unr.edu"><img src="/content/themes/keckshulich/images/logo-unr-white-transparent.svg" alt="University of Nevada, Reno" /></a>
+              <div id="search">
+               <?php get_search_form(); ?>
+              </div>
+
+              <!-- <a class="logo-unr" href="https://www.unr.edu"><img src="/content/themes/keckshulich/images/logo-unr-white-transparent.svg" alt="University of Nevada, Reno" /></a> -->
             </div>
           </div>
         </div>
