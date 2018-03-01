@@ -10,9 +10,13 @@
   }
   main {
     >h1 {
+      @include hide-offscreen;
       @include heading(2);
       text-align:center;
       color:$dark-blue;
+    }
+    >a[href="#exhibit-themes"] {
+      @include hidden-skip-link;
     }
     >p {
       color:$dark-blue;

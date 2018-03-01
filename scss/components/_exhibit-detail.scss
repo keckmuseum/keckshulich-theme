@@ -178,5 +178,8 @@
     &.pswp__button--zoom:after {
       content:'\f00e';
     }
+    span {
+      visibility: hidden;
+    }
   }
 }

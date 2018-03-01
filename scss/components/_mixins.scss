@@ -86,6 +86,18 @@
   }
 }
 
+@mixin hidden-skip-link() {
+  @include hide-offscreen();
+  background-color:$primary-color;
+  color:$white;
+  padding:rem-calc(10px);
+  //@include border-radius(rem-calc(10px));
+
+  &:focus,&:hover,&:active {
+    @include hide-offscreen(true);
+  }
+}
+
 @mixin img-fit($max-width:100%,$max-height:310px) {
   max-height: $max-height;
   width: auto;

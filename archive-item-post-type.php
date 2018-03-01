@@ -8,23 +8,27 @@ get_header(); ?>
 
 <div id="content" class="wrap">
 
-	<main role="main" aria-labelledby="bond-listing-title">
-		<!-- <h1 id="bond-listing-title">Bond Library</h1> -->
-
+	<main role="main" aria-label="Bond Library">
+		<a href="#exhibit-themes">Skip to Popular Bond Themes List</a>
 		<div class="content-area exhibit-library">
 			<div>
 				<div>
 					<div>
 						<div>
-							<p class="instructions">Choose multiple categories for sorting in the Advanced Search.</p>
-							<?php require('inc/exhibits-filters.php'); ?>
-							<!-- <a href="#exhibit-browser">Open in Exhibit Browser</a> -->
-
+							<section id="exhibit-filters" aria-describedby="header">
+								<header>
+									<p class="instructions">Choose multiple categories for sorting in the Advanced Search.</p>
+								</header>
+								<?php require('inc/exhibits-filters.php'); ?>
+							</section>
 							<div class="divider">&nbsp;</div>
-							<p class="instructions">Explore popular themes in the collection.</p>
-							<?php require('inc/exhibits-themes.php'); ?>
-
-							<?php // require('inc/exhibits-grid.php'); ?>
+							<section id="exhibit-themes" aria-describedby="header">
+								<header>
+									<a id="exhibit-themes"></a>
+									<p class="instructions">Explore popular themes in the collection.</p>
+								</header>
+								<?php require('inc/exhibits-themes.php'); ?>
+							</section>
 						</div>
 					</div>
 				</div>

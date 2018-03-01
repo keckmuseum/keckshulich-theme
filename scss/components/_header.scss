@@ -6,18 +6,11 @@ header#header {
     //min-height:300px;
   }
   >a[href="#content"]{
-    @include hide-offscreen();
-    background-color:$primary-color;
-    color:$white;
-    padding:rem-calc(10px);
-    //@include border-radius(rem-calc(10px));
-
+    @include hidden-skip-link;
     &:focus,&:hover,&:active {
-    @include hide-offscreen(true);
       @include horizontal-center();
       z-index:10;
     }
-
   }
   >img:first-of-type {
     display:none;

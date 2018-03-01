@@ -9,6 +9,9 @@
       margin: 0;
       @include flex-grid-column();
     }
+    label {
+      @include hide-offscreen;
+    }
     select {
       @include heading(2, true);
       color:$dark-blue;

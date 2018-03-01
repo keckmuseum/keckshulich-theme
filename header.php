@@ -23,21 +23,22 @@
                 </div>
               </div>
 
-              <!-- <button id="menu-button" data-responsive-toggle="menu">
+              <button id="menu-button" data-responsive-toggle="menu">
                 <span data-toggle>Menu</span>
               </button>
 
               <nav id="menu" role="navigation"> -->
-                <!-- div id="search">
-                  <?php //get_search_form(); ?>
-                </div -->
-                <?php /* wp_nav_menu( array(
+
+                <?php wp_nav_menu( array(
                         'theme_location' => 'main-menu',
                         'container' => false,
                         //'menu_id' => 'nav',
                         'walker' => new rm_theme_walker_nav_menu,
-                       ) ); */ ?>
-              <!-- </nav> -->
+                       ) ); ?>
+               <div id="search">
+                <?php get_search_form(); ?>
+               </div>
+              </nav>
 
               <a class="logo-unr" href="https://www.unr.edu"><img src="/content/themes/keckshulich/images/logo-unr-white-transparent.svg" alt="University of Nevada, Reno" /></a>
             </div>

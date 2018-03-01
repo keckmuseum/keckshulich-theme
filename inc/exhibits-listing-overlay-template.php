@@ -8,9 +8,10 @@
   <p><strong>Swipe left or right to browse the collection.</strong></p>
   <p><strong>Click on thumbnails for document detail.</strong></p> -->
 </div>
-<div class="exhibit-browser">
-  <a class="back-to-listing" href="/bonds/"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
+<div id="exhibit-browser" tabindex="-1" class="exhibit-browser" role="dialog" aria-label="Exhibit Browser" aria-modal="true">
+
   <div class="content-area">
+    <a tabindex="0" class="back-to-listing" href="#back-to-library"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i><span>Back to library</span></a>
     <div class="swiper-container site-main exhibits exhibits-carousel">
       <ul class="swiper-wrapper">
 

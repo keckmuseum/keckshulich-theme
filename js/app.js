@@ -85,12 +85,29 @@ $(document).ready(
           false,
           true
         );
+        returnFocus=$(this);
       }
     );
     $('.exhibits-filters a[href="#clear"]').click(
       function(e) {
         e.preventDefault();
         resetFilters();
+      }
+    );
+
+    $(document).on('click','.exhibit-images .transcription-link a',
+      function(e){
+        e.preventDefault();
+        target = $(this).attr('href');
+        if($(target).hasClass('show')){
+          $(target).removeClass('show');
+          $(this).parent().parent().find('img').show();
+          $(this).html('Transcription');
+        } else {
+          $(target).addClass('show');
+          $(this).parent().parent().find('img').hide();
+          $(this).html('Image');
+        }
       }
     );
 
@@ -106,6 +123,7 @@ $(document).ready(
           true
         );
         $.cookie('current-theme',$(this).data('theme-id'),{ path: '/' });
+        returnFocus=$(this);
       }
     );
 
@@ -117,14 +135,41 @@ $(document).ready(
     //   }
     // );
 
+
+
     $('.exhibit-browser').on('click',
       function(e){
         console.log(e.target);
         if($(e.target).parents('.swiper-container').length === 0) {
           exhibitBrowserOverlay('close');
+          $(returnFocus).focus();
         }
       }
     );
+    $('.exhibit-browser a[href="#back-to-library"]').on('keydown',
+      function(e){
+          if(e.which == 13){//Enter key pressed
+              e.preventDefault();
+              $('.exhibit-browser').click();//Trigger close dialog click event
+          }
+      }
+    );
+    $('.exhibit-browser, .exhibit-browser *').on('keydown',
+      function(e){
+          if(e.which == 27){//Enter key pressed
+              e.preventDefault();
+              $('.exhibit-browser').click();//Trigger close dialog click event
+          }
+      }
+    );
+    // $('.exhibit-browser .swiper-slide h2').on('keydown',
+    //   function(e){
+    //     console.log('keydown');
+    //       if(e.which == 13){//Enter key pressed
+    //           $(this).parent().find('.view-detail').click();//Trigger search button click event
+    //       }
+    //   }
+    // );
 
     // $('.exhibit-browser .back-to-listing').attr('href','http://google.com/').click(
     //   function(e){
@@ -254,6 +299,7 @@ function exhibitBrowserOverlay(action) {
   } else if(action === 'loaded') {
     console.log('loaded');
       $('.exhibit-browser').css('opacity',1);
+      $('#exhibit-browser').focus();
       // console.log('?');
   } else {
     console.log('open');
@@ -386,7 +432,7 @@ function browserBuild(data) {
     itemsError=true;
     $('body').addClass('items-error');
     $('.exhibit-browser .swiper-wrapper').html(
-      '<li class="swiper-slide"><div class="query-error"><p>No results. Try changing the filter options.</p></div></li>'
+      '<li tabindex="0" class="swiper-slide"><div class="query-error"><p>No results. Try changing the filter options.</p></div></li>'
     );
   }
 }
@@ -400,37 +446,51 @@ function setGridItems(item) {
   );
 }
 function setBrowserItems(item, i) {
+  // if(i==0){
+  //   expanded='true'
+  // }
+  // else{
+  //   expanded='false'
+  // }
   $( '.exhibit-browser .exhibits > ul' ).append('\
-    <li id="exhibit-'+i+'" class="swiper-slide">\
+    <li tabindex="0" id="exhibit-'+i+'" class="swiper-slide" aria-labelledby="'+item.slug+'-title">\
         <div class="exhibit">\
           <div class="inner">\
-            <h2>'+item.title.rendered+'</h2>\
+            <h2 id="'+item.slug+'-title">'+item.title.rendered+'</h2>\
             <div class="exhibit-meta">\
               <div>\
-                <div class="date-issued" aria-labelled-by="h3">\
-                  <h3>Date</h3>\
+                <div tabindex="0" class="date-issued" aria-labelled-by="'+item.slug+'-date-title">\
+                  <h3 id="'+item.slug+'-title">Date</h3>\
                   <p>'+item.date+'</p>\
                 </div>\
               \
-                <div class="location" aria-labelled-by="h3">\
-                  <h3>Location</h3>\
+                <div tabindex="0" class="location" aria-labelled-by="'+item.slug+'-location-title">\
+                  <h3 id="'+item.slug+'-location-title">Location</h3>\
                   <p>'+item.location+'</p>\
                 </div>\
               \
-                <div class="amount" aria-labelled-by="h3">\
-                  <h3>Amount</h3>\
+                <div tabindex="0" class="amount" aria-labelled-by="'+item.slug+'-amount-title">\
+                  <h3 id="'+item.slug+'-amount-title">Amount</h3>\
                   <p>$'+item.amount+'</p>\
                 </div>\
               \
                 '+metaList(item.signature, 'signature', 'signatures', 'Signatures', i, 'getTaxonomyName')+'\
               \
               </div>\
-              <a class="view-detail" href="'+item.link+'" title="'+item.title.rendered+'">Explore Further</a>\
+              <a aria-label="More details about this bond" tabindex="0" class="view-detail" href="'+item.link+'" title="'+item.title.rendered+'">Explore Further</a>\
             </div>\
             <div class="exhibit-images">\
-              <a class="view-detail" href="'+item.link+'">\
-                <img src="placeholder.png" alt="Loading..." />\
-              </a>\
+                <div tabindex="0" aria-labelled-by="'+item.slug+'-bond-image">\
+                  <h3 id="'+item.slug+'-bond-image-title">Bond Image</h3>\
+                  <img src="placeholder.png" alt="Loading..." aria-labelled-by="'+item.slug+'-bond-image-title" />\
+                </div>\
+                <p aria-hidden="true" class="transcription-link">\
+                  <a tabindex="-1" href="#'+item.slug+'-transcription">Transcription</a>\
+                </p>\
+                <div tabindex="0" class="transcription" aria-labelledby="'+item.slug+'-transcription-title" id="'+item.slug+'-transcription">\
+                  <h3 id="'+item.slug+'-transcription-title">Bond Transcription</h3>\
+                  <p>'+item.transcription+'</p>\
+                </div>\
             </div>\
           </div>\
         </div></li>'
@@ -479,8 +539,8 @@ function metaList(object, taxonomySlug, slug, label, parentIndex, itemCallback) 
   );
   if(list != '') {
     list = '\
-    <div class="'+slug+'" aria-labelled-by="h3">\
-      <h3>'+label+'</h3>\
+    <div tabindex="0" class="'+slug+'" aria-labelled-by="'+slug+'-signatures-title">\
+      <h3 id="'+slug+'-signatures-title">'+label+'</h3>\
       <ul>\
         '+list+'\
       </ul>\

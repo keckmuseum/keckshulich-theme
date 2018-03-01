@@ -1,4 +1,4 @@
-<main role="main" aria-labelledby="bond-listing-title">
+<main role="main" aria-label="bond-listing-title">
   <h1 id="bond-listing-title">Bond Listing</h1>
   <p><strong>Swipe left or right to browse the collection.</strong></p>
   <p><strong>Click on thumbnails for document detail.</strong></p>
