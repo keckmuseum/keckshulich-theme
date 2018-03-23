@@ -5,6 +5,7 @@ function isUndefined(value){
 
 $(document).ready(
   function() {
+    $(document).foundation();
 
     swiperArgs = {
     	effect: 'coverflow',
@@ -487,9 +488,9 @@ function setBrowserItems(item, i) {
                 <p aria-hidden="true" class="transcription-link">\
                   <a tabindex="-1" href="#'+item.slug+'-transcription">Transcription</a>\
                 </p>\
-                <div tabindex="0" class="transcription" aria-labelledby="'+item.slug+'-transcription-title" id="'+item.slug+'-transcription">\
+                <div class="transcription" id="'+item.slug+'-transcription">\
                   <h3 id="'+item.slug+'-transcription-title">Bond Transcription</h3>\
-                  <p>'+item.transcription+'</p>\
+                  <p tabindex="0" aria-labelledby="'+item.slug+'-transcription-title">'+item.transcription+'</p>\
                 </div>\
             </div>\
           </div>\
@@ -609,6 +610,3 @@ function setImages(data, i, imgSelector) {
   }
   return 0;
 }
-
-
-$(document).foundation();

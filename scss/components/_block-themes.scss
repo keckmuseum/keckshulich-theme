@@ -1,0 +1,10 @@
+#themes {
+  width:100%;
+  ul {
+    @include flex-grid-row($columns:4);
+    text-align: center;
+    >li {
+      @include flex-grid-column();
+    }
+  }
+}

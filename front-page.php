@@ -5,15 +5,13 @@ Template Post Type: page
 */
 ?>
 <?php get_header(); ?>
-<?php get_template_part('block-cta-row'); ?>
-<?php get_template_part('block-slider'); ?>
 <?php
 $content='';
 if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
   <?php $content.=get_the_content(); ?>
 <?php endwhile; endif;
 if ($content!='') { ?>
-<main>
+<main id="content">
   <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
       <?php if(get_theme_mod('rm_theme_front_page_show_title')) { ?>
@@ -29,8 +27,11 @@ if ($content!='') { ?>
     </article>
     <?php if ( ! post_password_required() ) comments_template( '', true ); ?>
   <?php endwhile; endif; ?>
+  <section id="themes">
+    <?php require('inc/block-narrative-listing.php'); ?>
+  </section>
 </main>
-<?php require('inc/block-narrative-listing.php'); ?>
+
 
 <?php } ?>
 <?php get_footer(); ?>

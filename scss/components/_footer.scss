@@ -1,31 +1,33 @@
 footer#footer {
-  @include content-spacing();
-  padding:0;
+  color:$white;
+  @include flex-grid-row();
+  max-width:84%;
   >div {
-    @include grid-row();
-    >ul {
-      @include list-inline();
-      @include flex-grid-row();
-      >li {
-        @include flex-grid-column();
-        margin:0 auto;
-        &.widget_copyright_widget,
-        &.widget_nav_menu {
-          text-align:center;
-        }
-      }
-    }
-    &:first-child {
-      >ul {
-        >li {
-          @include breakpoint(medium) {
-            max-width:33%;
-          }
-        }
-      }
+    @include flex-grid-column(12);
+    margin:rem-calc(5px) 0;
+    @include breakpoint('medium') {
+      @include flex-grid-column(4);
     }
   }
   .menu {
+    display:block;
     @include mobile-buttons();
+    li {
+      display:block;
+      flex:none;
+      padding:0;
+      margin:rem-calc(5px) 0;
+      @include breakpoint('medium') {
+        margin:rem-calc(10px) 0;
+      }
+      a {
+        background-color:rgba($dark-blue,0.5);
+        @include breakpoint('medium') {
+          padding:0;
+          background-color:transparent;
+        }
+      }
+
+    }
   }
 }

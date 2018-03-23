@@ -23,4 +23,4 @@ $posts_array = get_posts(
  )
 );
 
-keck_post_list($posts_array);
+keck_post_list($posts_array, 'listing-thumb');

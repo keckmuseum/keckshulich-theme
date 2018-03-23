@@ -1,27 +1,24 @@
-        <!-- <footer id="footer" role="contentinfo">
+        <footer id="footer">
           <div>
-              <?php if ( is_active_sidebar( 'footer-items' ) ) : ?>
-                  <ul>
-                    <?php dynamic_sidebar( 'footer-items' ); ?>
-                  </ul>
-              <?php endif; ?>
+            <nav id="footer-menu" role="navigation">
+              <?php wp_nav_menu( array(
+                  'theme_location' => 'main-menu',
+                  'container' => false,
+                  //'menu_id' => 'nav',
+                  'walker' => new rm_theme_walker_nav_menu,
+                 ) ); ?>
+            </nav>
           </div>
           <div>
-              <?php if ( is_active_sidebar( 'footer-items-2' ) ) : ?>
-                  <ul>
-                    <?php dynamic_sidebar( 'footer-items-2' ); ?>
-                  </ul>
-              <?php endif; ?>
           </div>
           <div>
-              <?php if ( is_active_sidebar( 'footer-items-3' ) ) : ?>
-                  <ul>
-                    <?php dynamic_sidebar( 'footer-items-3' ); ?>
-                  </ul>
-              <?php endif; ?>
+            <?php logo("header","full"); ?>
+            &copy <?php echo date('Y'); ?> <?php echo esc_html( get_bloginfo( 'name' ) ); ?>
           </div>
-        </footer> -->
+        </footer>
+
         <?php wp_footer(); ?>
+
         <a class="exit-off-canvas"></a>
 
   </body>
